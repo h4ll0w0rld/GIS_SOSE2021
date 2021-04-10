@@ -1,5 +1,9 @@
-*{   
+*{
+  
+   
 }
+
+
 html {
     scroll-behavior: smooth;
   }
@@ -9,9 +13,9 @@ h1, h2{
 }
 body{
     background-image: url("media/bg.png");
-  
     /* background-repeat: no-repeat;
     background-size: cover; */
+    width: 800px;
     
 }
 p{
@@ -108,9 +112,4 @@ a:hover {
 
 .Menu a.activo{
     background-color: rgba(144, 147, 153, 0.336);
-}
-.youtube{
-    height: 35px;
-    width: 50px;
-    background-color: transparent;
 }
