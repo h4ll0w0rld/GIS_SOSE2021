@@ -152,13 +152,20 @@
    /* Responsive */
    
    @media screen and (max-width: 600px) {
+       * {
+           margin-left: 0px;
+           margin-right: 0px;
+       }
        .Hallo {
-           margin-top: 30px;
-           font-size: 70px;
+           margin-top: 10px;
+           font-size: 40px;
            float: left;
            margin-left: 0px;
        }
        video {
+           width: 300px;
+       }
+       .teddy {
            width: 300px;
        }
    }
