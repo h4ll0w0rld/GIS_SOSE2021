@@ -1,0 +1,186 @@
+   * {
+       margin: 0 auto;
+       margin-bottom: 30px;
+   }
+   
+   html {
+       scroll-behavior: smooth;
+   }
+   
+   h1,
+   h2 {
+       color: brown;
+       font-family: Arial, Helvetica, sans-serif;
+   }
+   
+   body {
+       background-image: url("media/bg.png");
+   }
+   
+   p {
+       font-family: Arial, Helvetica, sans-serif;
+       font-size: medium;
+   }
+   
+   video {
+       width: 1000px;
+       position: relative;
+   }
+   
+   a {
+       text-decoration: none;
+       color: black;
+       font-family: Arial, Helvetica, sans-serif;
+   }
+   
+   audio {}
+   
+   .Menu {
+       overflow: hidden;
+       position: fixed;
+       float: right;
+       top: 0;
+       width: 100%;
+   }
+   
+   .warteschlange {
+       font-style: italic;
+   }
+   
+   .teddy {
+       width: 900px;
+       position: relative;
+   }
+   
+   .zeitraffer {
+       width: 800px;
+       float: right;
+       margin-bottom: 100px;
+   }
+   
+   .youtube {
+       height: 35px;
+       width: 50px;
+       background-color: transparent;
+   }
+   
+   .gridtest {
+       margin-top: 70px;
+       float: center;
+       width: auto;
+       transition: transform .2s;
+   }
+   
+   #seconddiv {
+       padding-top: 100px;
+   }
+   
+   #Kontakt {
+       padding-top: 100px;
+   }
+   
+   #abstand {
+       padding-bottom: -60px;
+   }
+   
+   #wichtigstes {
+       margin-top: 100px;
+   }
+   
+   #Fließtext {
+       padding-right: 30px;
+       padding-left: 30px;
+   }
+   
+   .Hallo {
+       font-size: 100px;
+       position: relative;
+       margin-top: -90px;
+       margin-right: 400px;
+   }
+   
+   #Überschrift {
+       margin-top: -30px;
+   }
+   
+   #Galerie {
+       margin-top: 70px;
+       padding: 50px;
+       display: flex;
+       flex-wrap: wrap;
+       column-count: 6;
+   }
+   
+   #videozeit {
+       /* float: left; */
+       margin-top: 60px;
+       margin-bottom: 70px;
+   }
+   
+   input[type=text] {
+       background-color: #9a9ba58f;
+       color: white;
+       border: none;
+   }
+   /* Komplexe */
+   
+   .Menu a.activo {
+       background-color: rgba(144, 147, 153, 0.336);
+   }
+   
+   .Menu a:hover {
+       color: rgb(40, 42, 165);
+   }
+   
+   footer hr {
+       border-top: 3px solid rgb(0, 0, 0);
+   }
+   
+   .Menu a {
+       float: right;
+       display: block;
+       color: darkred;
+       padding: 20px;
+       text-decoration: none;
+       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       font-size: larger;
+   }
+   
+   .gridtest:hover {
+       transform: scale(1.05);
+   }
+   /* Responsive */
+   
+   @media screen and (max-width: 600px) {
+       .Hallo {
+           margin-top: 30px;
+           font-size: 70px;
+           float: left;
+           margin-left: 0px;
+       }
+       video {
+           width: 300px;
+       }
+   }
+   
+   @media screen and (max-width: 1024px) {
+       main .Hallo {
+           padding-top: 0px;
+       }
+       #KontaktÜb {
+           padding-top: 60px;
+       }
+   }
+   
+   @media screen and (min-width: 1024px) {
+       main #Galarie {
+           margin: 0;
+           /* position: absolute; */
+           transform: translate(0, -50%);
+           top: 50%;
+       }
+       .Einleitungstext {
+           margin-bottom: 30px;
+           margin-right: 600px;
+       }
+   }
