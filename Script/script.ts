@@ -81,12 +81,12 @@ function multiply(z1: number, z2: number): void {
     console.log(z1 * z2);
 
 }
-function max(z1: number, z2: number): void {
+function max(z1: number, z2: number): number {
     if (z1 < z2) {
-        console.log(z2 + " is biggest");
+      return z2;
 
     } else
-        console.log(z1 + "is biggest");
+    return z1;
 }
 function alles(): void {
     let counter: number = 0;
@@ -156,7 +156,6 @@ function schach(höhe: number, breite: number): void {
             } else {
                 reihe += "-";  //Bessere Sichtbarkeit
             }
-            console.log("");
            
             
         }

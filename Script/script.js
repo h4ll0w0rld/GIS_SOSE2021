@@ -81,10 +81,10 @@ function multiply(z1, z2) {
 }
 function max(z1, z2) {
     if (z1 < z2) {
-        console.log(z2 + " is biggest");
+        return z2;
     }
     else
-        console.log(z1 + "is biggest");
+        return z1;
 }
 function alles() {
     let counter = 0;
@@ -149,7 +149,6 @@ function schach(höhe, breite) {
             else {
                 reihe += "-"; //Bessere Sichtbarkeit
             }
-            console.log("");
         }
         console.log(reihe);
     }
