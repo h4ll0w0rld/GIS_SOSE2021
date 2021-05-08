@@ -34,6 +34,11 @@ var Aufgabe_1;
         location.reload();
     }
 })(Aufgabe_1 || (Aufgabe_1 = {}));
+let heatArray = new Array;
+heatArray[0] = { name: "Hans", secondName: "Peter", imageSrc: "jaja.jpg", specialPart: "head" };
+heatArray[1] = { name: "Eberle", secondName: "Hans", imageSrc: "head1.jpg", specialPart: "head" };
+heatArray[2] = { name: "Mia", secondName: "Kanns", imageSrc: "head2.jpg", specialPart: "head" };
+showImage(heatArray);
 function showImage(interfacePerson) {
     for (let index = 0; index < interfacePerson.length; index++) {
         let image = document.createElement("img");
@@ -50,11 +55,6 @@ function showImage(interfacePerson) {
         }
         document.body.append(image);
     }
-    let heatArray = new Array;
-    heatArray[0] = { name: "Hans", secondName: "Peter", imageSrc: "jaja.jpg", specialPart: "head" };
-    heatArray[1] = { name: "Eberle", secondName: "Hans", imageSrc: "head1.jpg", specialPart: "head" };
-    heatArray[2] = { name: "Mia", secondName: "Kanns", imageSrc: "head2.jpg", specialPart: "head" };
-    showImage(heatArray);
     // if (document.head.title == "HeadSelect")
     let speicher = { heat: "test", body: "test", leg: "test" };
     function choseHeat(klick) {

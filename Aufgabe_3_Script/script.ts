@@ -43,8 +43,13 @@ namespace Aufgabe_1 {
     }
 }
 
+let heatArray: ImageInterface[] = new Array;
 
+heatArray[0] = { name: "Hans", secondName: "Peter", imageSrc: "jaja.jpg", specialPart: "head" };
+heatArray[1] = { name: "Eberle", secondName: "Hans", imageSrc: "head1.jpg", specialPart: "head" };
+heatArray[2] = { name: "Mia", secondName: "Kanns", imageSrc: "head2.jpg", specialPart: "head" };
 
+showImage(heatArray);
 
 function showImage(interfacePerson: ImageInterface[]): void {
 
@@ -67,14 +72,9 @@ function showImage(interfacePerson: ImageInterface[]): void {
 
     }
 
-    let heatArray: ImageInterface[] = new Array;
-
-    heatArray[0] = { name: "Hans", secondName: "Peter", imageSrc: "jaja.jpg", specialPart: "head" };
-    heatArray[1] = { name: "Eberle", secondName: "Hans", imageSrc: "head1.jpg", specialPart: "head" };
-    heatArray[2] = { name: "Mia", secondName: "Kanns", imageSrc: "head2.jpg", specialPart: "head" };
 
 
-    showImage(heatArray);
+
     // if (document.head.title == "HeadSelect")
 
 
