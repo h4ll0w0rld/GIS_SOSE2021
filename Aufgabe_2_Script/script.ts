@@ -150,46 +150,46 @@ namespace Aufgabe_3 {
 
 }
 
-//namespace Aufgabe_3B {
-//     let canvas: HTMLCanvasElement = document.querySelector("canvas");       //Hatte prob mit dem gegebenen Comand hoffe das passt so :D
-//     console.log(document.querySelector("canvas"));
-//     let context: CanvasRenderingContext2D = canvas.getContext("2d");
-//     class Rechteck {
-//         randomX: number;
-//         randomY: number;
-//         randomWith: number;
-//         randomHeight: number;
+namespace Aufgabe_3B {
+    let canvas: HTMLCanvasElement = document.querySelector("canvas");       //Hatte prob mit dem gegebenen Comand hoffe das passt so :D
+    console.log(document.querySelector("canvas"));
+    let context: CanvasRenderingContext2D = canvas.getContext("2d");
+    class Rechteck {
+        randomX: number;
+        randomY: number;
+        randomWith: number;
+        randomHeight: number;
 
-//         constructor() {                             //Random werte werden generiert Aufgabe b
-//             this.randomX = Math.random() * 100;
-//             this.randomY = Math.random() * 100;
-//             this.randomWith = Math.random() * 100;
-//             this.randomHeight = Math.random() * 100;
+        constructor() {                             //Random werte werden generiert Aufgabe b
+            this.randomX = Math.random() * 100;
+            this.randomY = Math.random() * 100;
+            this.randomWith = Math.random() * 100;
+            this.randomHeight = Math.random() * 100;
 
-//         }
-//         public drawRect(): void {
+        }
+        public drawRect(): void {
 
-//             context.beginPath();
-//             context.fillRect(this.randomX, this.randomY, this.randomWith, this.randomHeight);
+            context.beginPath();
+            context.fillRect(this.randomX, this.randomY, this.randomWith, this.randomHeight);
 
-//         }
+        }
 
-//         public drawRandom(a: number): void {
-//             let sammler: Rechteck[] = [];
-//             for (let e = 0; e <= a; e++) {
-//                 sammler.push(new Rechteck());
-//             }
+        public drawRandom(a: number): void {
+            let sammler: Rechteck[] = [];
+            for (let e = 0; e <= a; e++) {
+                sammler.push(new Rechteck());
+            }
 
-//             for (let e = 0; e < sammler.length - 1; e++) {
-//                 sammler[e].drawRect();
+            for (let e = 0; e < sammler.length - 1; e++) {
+                sammler[e].drawRect();
 
-//             }
+            }
 
-//         }
+        }
 
-//     }
+    }
 
-//     let hallo: Rechteck = new Rechteck();
-//     hallo.drawRandom(12);
+    let hallo: Rechteck = new Rechteck();
+    hallo.drawRandom(12);
 
-// }
+}

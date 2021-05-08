@@ -101,36 +101,33 @@ var Aufgabe_3;
     context.fill();
     context.stroke();
 })(Aufgabe_3 || (Aufgabe_3 = {}));
-//namespace Aufgabe_3B {
-//     let canvas: HTMLCanvasElement = document.querySelector("canvas");       //Hatte prob mit dem gegebenen Comand hoffe das passt so :D
-//     console.log(document.querySelector("canvas"));
-//     let context: CanvasRenderingContext2D = canvas.getContext("2d");
-//     class Rechteck {
-//         randomX: number;
-//         randomY: number;
-//         randomWith: number;
-//         randomHeight: number;
-//         constructor() {                             //Random werte werden generiert Aufgabe b
-//             this.randomX = Math.random() * 100;
-//             this.randomY = Math.random() * 100;
-//             this.randomWith = Math.random() * 100;
-//             this.randomHeight = Math.random() * 100;
-//         }
-//         public drawRect(): void {
-//             context.beginPath();
-//             context.fillRect(this.randomX, this.randomY, this.randomWith, this.randomHeight);
-//         }
-//         public drawRandom(a: number): void {
-//             let sammler: Rechteck[] = [];
-//             for (let e = 0; e <= a; e++) {
-//                 sammler.push(new Rechteck());
-//             }
-//             for (let e = 0; e < sammler.length - 1; e++) {
-//                 sammler[e].drawRect();
-//             }
-//         }
-//     }
-//     let hallo: Rechteck = new Rechteck();
-//     hallo.drawRandom(12);
-// }
+var Aufgabe_3B;
+(function (Aufgabe_3B) {
+    let canvas = document.querySelector("canvas"); //Hatte prob mit dem gegebenen Comand hoffe das passt so :D
+    console.log(document.querySelector("canvas"));
+    let context = canvas.getContext("2d");
+    class Rechteck {
+        constructor() {
+            this.randomX = Math.random() * 100;
+            this.randomY = Math.random() * 100;
+            this.randomWith = Math.random() * 100;
+            this.randomHeight = Math.random() * 100;
+        }
+        drawRect() {
+            context.beginPath();
+            context.fillRect(this.randomX, this.randomY, this.randomWith, this.randomHeight);
+        }
+        drawRandom(a) {
+            let sammler = [];
+            for (let e = 0; e <= a; e++) {
+                sammler.push(new Rechteck());
+            }
+            for (let e = 0; e < sammler.length - 1; e++) {
+                sammler[e].drawRect();
+            }
+        }
+    }
+    let hallo = new Rechteck();
+    hallo.drawRandom(12);
+})(Aufgabe_3B || (Aufgabe_3B = {}));
 //# sourceMappingURL=script.js.map
