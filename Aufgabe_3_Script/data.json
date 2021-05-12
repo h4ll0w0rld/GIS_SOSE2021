@@ -1,0 +1,33 @@
+[{
+    "name": "Hans",
+    "secondName": "Peter",
+    "imageSrc": "jaja.jpg",
+    "specialPart": "head"
+
+}, {
+    "name": "Hans",
+    "secondName": "Peter",
+    "imageSrc": "head2.jpg",
+    "specialPart": "head"
+}, {
+    "name": "Hans",
+    "secondName": "Peter",
+    "imageSrc": "head1.jpg",
+    "specialPart": "head"
+}, {
+    "name": "Hans",
+    "secondName": "Peter",
+    "imageSrc": "head1.jpg",
+    "specialPart": "body"
+
+}, {
+    "name": "Hans",
+    "secondName": "Peter",
+    "imageSrc": "head1.jpg",
+    "specialPart": "body"
+}, {
+    "name": "Hans",
+    "secondName": "Peter",
+    "imageSrc": "head1.jpg",
+    "specialPart": "body"
+}]
