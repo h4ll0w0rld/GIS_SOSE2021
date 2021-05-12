@@ -34,8 +34,8 @@ interface ChosenPart {
 
 
 
-console.log(imageJSON);
-let myCImage: ImageInterface[] = JSON.parse(imageJSON);
+console.log(imageJSON);         //Er gibt in data.ts alles richtig aus warum ist es hier undefinded ?? 
+let myCImage: ImageInterface[] = JSON.parse(imageJSON); // Hier natürlich auch 
 console.log(myCImage);
 
 
@@ -89,7 +89,7 @@ function showImage(interfacePerson: ImageInterface[]): void {
         // console.log(img.src);
         // speicher.heat = img.src;
         window.open("body.html");
-       // localStorage.setItem("head", img.src);
+       // localStorage.setItem("head", img.src);                //Ist das einfach Schrott ? weil wenn ich das versuche meckert js ... :)
         console.log(localStorage.getItem("head"));
 
     }

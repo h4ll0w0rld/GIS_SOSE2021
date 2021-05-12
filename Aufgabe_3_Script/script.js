@@ -13,8 +13,8 @@ var Bitte;
     // legArray[0] = { name: "Hans", secondName: "Peter", imageSrc: "jaja.jpg", specialPart: "legs" };
     // legArray[1] = { name: "Eberle", secondName: "Hans", imageSrc: "jaja.jpg", specialPart: "legs" };
     // legArray[2] = { name: "Mia", secondName: "Kanns", imageSrc: "jaja.jpg", specialPart: "legs" };
-    console.log(Bitte.imageJSON);
-    let myCImage = JSON.parse(Bitte.imageJSON);
+    console.log(Bitte.imageJSON); //Er gibt in data.ts alles richtig aus warum ist es hier undefinded ?? 
+    let myCImage = JSON.parse(Bitte.imageJSON); // Hier natürlich auch 
     console.log(myCImage);
     let speicher = { heat: "test", body: "test", leg: "test" };
     if (document.body.id == "HeadSelect") {
@@ -50,7 +50,7 @@ var Bitte;
             // console.log(img.src);
             // speicher.heat = img.src;
             window.open("body.html");
-            // localStorage.setItem("head", img.src);
+            // localStorage.setItem("head", img.src);                //Ist das einfach Schrott ? weil wenn ich das versuche meckert js ... :)
             console.log(localStorage.getItem("head"));
         }
         function choseBody(klick) {
