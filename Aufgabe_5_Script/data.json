@@ -1,0 +1,65 @@
+{
+    "imageHead": [{
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P1.png",
+            "specialPart": "head"
+        },
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P4.png",
+            "specialPart": "head"
+        },
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P7.png",
+            "specialPart": "head"
+        },
+
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P2.png",
+            "specialPart": "body"
+        },
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P5.png",
+            "specialPart": "body"
+        },
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P8.png",
+            "specialPart": "body"
+        },
+
+
+
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P3.png",
+            "specialPart": "legs"
+        },
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P6.png",
+            "specialPart": "legs"
+        },
+        {
+            "name": "Hans",
+            "secondName": "Peter",
+            "imageSrc": "res/P9.png",
+            "specialPart": "legs"
+        }
+
+
+    ]
+
+
+}

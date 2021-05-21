@@ -1,10 +1,10 @@
 "use strict";
 var Bitte;
 (function (Bitte) {
-    console.log(Bitte.headImageJSON);
-    let headImg = JSON.parse(Bitte.headImageJSON);
-    let bodyImg = JSON.parse(Bitte.bodyImageJSON);
-    let legImg = JSON.parse(Bitte.legImageJSON);
+    console.log(headImageJSON);
+    let headImg = JSON.parse(headImageJSON);
+    let bodyImg = JSON.parse(bodyImageJSON);
+    let legImg = JSON.parse(legImageJSON);
     console.log(headImg);
     console.log(bodyImg);
     function showImage(interfacePerson) {

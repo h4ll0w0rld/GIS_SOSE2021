@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.legImageJSON = exports.bodyImageJSON = exports.headImageJSON = void 0;
 let imageArray = new Array;
 imageArray[0] = { name: "Hans", secondName: "Peter", imageSrc: "res/P1.png", specialPart: "head" };
 imageArray[1] = { name: "Eberle", secondName: "Hans", imageSrc: "res/P4.png", specialPart: "head" };
@@ -16,7 +14,7 @@ legArray[0] = { name: "Hans", secondName: "Peter", imageSrc: "res/P3.png", speci
 legArray[1] = { name: "Eberle", secondName: "Hans", imageSrc: "res/P6.png", specialPart: "legs" };
 legArray[2] = { name: "Mia", secondName: "Kanns", imageSrc: "res/P9.png", specialPart: "legs" };
 legArray[3] = { name: "Mia", secondName: "Kanns", imageSrc: "res/P12.png", specialPart: "legs" };
-exports.headImageJSON = JSON.stringify(imageArray);
-exports.bodyImageJSON = JSON.stringify(bodyArray);
-exports.legImageJSON = JSON.stringify(legArray);
+let headImageJSON = JSON.stringify(imageArray);
+let bodyImageJSON = JSON.stringify(bodyArray);
+let legImageJSON = JSON.stringify(legArray);
 //# sourceMappingURL=data.js.map
