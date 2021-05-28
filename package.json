@@ -1,8 +1,8 @@
 {
-    "name": "herokujsonnils",
+    "name": "v",
     "version": "1.0.0",
     "description": "My first Test",
-    "main": "index.js",
+    "main": "script.js",
     "dependencies": {},
     "devDependencies": {},
     "scripts": {
