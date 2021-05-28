@@ -1,0 +1,21 @@
+{
+    "name": "herokujsonnils",
+    "version": "1.0.0",
+    "description": "My first Test",
+    "main": "index.js",
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+        "start": "node Aufgabe_1_Server/script.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/h4ll0w0rld/GIS_SOSE2021.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/h4ll0w0rld/GIS_SOSE2021/issues"
+    },
+    "homepage": "https://github.com/h4ll0w0rld/GIS_SOSE2021#readme"
+}

@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "TestProjekt": {
-      "commandName": "Executable",
-      "executablePath": "fusee",
-      "commandLineArgs": "player $(TargetPath)"
-    }
-  }
-}
