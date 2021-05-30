@@ -22,7 +22,6 @@ export namespace P_3_1Server {
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.write(_request.url);
         console.log(_request.url);
-        console.log("Jajajajaja");
         _response.end();
     }
 }
