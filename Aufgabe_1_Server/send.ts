@@ -1,20 +1,22 @@
+// let buttonSubmitt: HTMLButtonElement = <HTMLButtonElement>document.getElementById("submit");
+// buttonSubmitt.addEventListener("click", sendTheData);
 
-var form = document.querySelector("form");
-var data: FormData = new FormData(form);
+// async function sendTheData(): Promise<void> {
+//     console.log("its all fine");
+//     let userData: FormData = new FormData(document.forms[0]);
+//     //  let url: string = "https://myfirsttestserverisnowlive.herokuapp.com/";
+//     let url: string = "http://localhost:8122";
+//     let query: URLSearchParams = new URLSearchParams(<any>userData);
+//     url += "?" + query.toString();
+//     let response: Response = await fetch(url, { method: "get" });
+//     let responseText: string = await response.text();
+//     console.log(responseText);
+//     showResponse(responseText);
 
-form.onsubmit = (event) => {
-    sendTheData();
-};
+// }
+// function showResponse(response: string): void {
+//     let responseDiv: HTMLDivElement = <HTMLDivElement>document.getElementById("response");
+//     responseDiv.innerHTML = "Serverantwort: " + response;
 
-
-async function sendTheData(): Promise<void> {
-    let response: Response = await fetch("https://myfirsttestserverisnowlive.herokuapp.com", {
-        method: "post",
-        body: data
-    });
-    let parser = await response.json();
-    console.log(parser);
-
-}
-
+// }
 
