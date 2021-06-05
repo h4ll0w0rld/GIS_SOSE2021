@@ -5,7 +5,7 @@ async function sendTheData() {
     console.log("its all fine");
     let userData = new FormData(document.forms[0]);
     let url = "https://myfirsttestserverisnowlive.herokuapp.com/";
-    // let url: string = "http://localhost:8122";
+    //  let url: string = "http://localhost:8122";
     let query = new URLSearchParams(userData);
     url += "?" + query.toString();
     let response = await fetch(url, { method: "get" });
