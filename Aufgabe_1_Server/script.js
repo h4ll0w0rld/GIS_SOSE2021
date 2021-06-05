@@ -27,7 +27,7 @@ var P_3_1Server;
                 console.log(key + " : " + url.query[key]);
                 _response.write(key + " : " + url.query[key] + "<br/>");
             }
-            let responseJson = JSON.stringify(url);
+            let responseJson = JSON.stringify(url.query);
             _response.write(responseJson);
             _response.end();
         }

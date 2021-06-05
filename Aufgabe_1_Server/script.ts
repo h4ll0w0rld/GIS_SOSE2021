@@ -33,7 +33,7 @@ export namespace P_3_1Server {
                 _response.write(key + " : " + url.query[key] + "<br/>");
 
             }
-            let responseJson: string = JSON.stringify(url);
+            let responseJson: string = JSON.stringify(url.query);
             _response.write(responseJson);
            
             _response.end();
