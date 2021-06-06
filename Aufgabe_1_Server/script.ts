@@ -19,28 +19,28 @@ export namespace P_3_1Server {
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {          //Anfragen werden hier "gefagen"
         console.log("I hear voices!");
+        _response.setHeader("content-type", "text/html; charset=utf-8");                //Anfrage wird als HTML Text Element dargestellt
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+        let refUrl: URL = new URL(_request.url, "https://myfirsttestserverisnowlive.herokuapp.com/");
+        var url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 
 
-        if (_request) {
-            _response.setHeader("content-type", "text/html; charset=utf-8");                //Anfrage wird als HTML Text Element dargestellt
-            _response.setHeader("Access-Control-Allow-Origin", "*");
-
-            var url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-          
-           // _response.write(responseJson);
+        if (refUrl.pathname == "/html") {
+            console.log("jea im fine");
+ 
             for (let key in url.query) {
-                console.log(key + " : " + url.query[key]);
-                _response.write(key + " : " + url.query[key] + "<br/>");
-
+      
+                _response.write("<p>" + key + " : " + url.query[key] + "<p/>");
             }
+            _response.end();
+
+        } else if (refUrl.pathname == "/json") {
+            
             let responseJson: string = JSON.stringify(url.query);
             _response.write(responseJson);
-           
             _response.end();
+
         }
 
-
-
-        _response.end();
     }
 }

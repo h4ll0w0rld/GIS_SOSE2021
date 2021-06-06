@@ -25,14 +25,12 @@ var P_3_1Server;
         if (refUrl.pathname == "/html") {
             console.log("jea im fine");
             for (let key in url.query) {
-                console.log(key + " : " + url.query[key]);
                 _response.write("<p>" + key + " : " + url.query[key] + "<p/>");
             }
             _response.end();
         }
         else if (refUrl.pathname == "/json") {
             let responseJson = JSON.stringify(url.query);
-            console.log(url.query);
             _response.write(responseJson);
             _response.end();
         }

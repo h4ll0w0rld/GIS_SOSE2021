@@ -18,20 +18,22 @@ var P_3_1Server;
     }
     function handleRequest(_request, _response) {
         console.log("I hear voices!");
-        if (_request) {
-            _response.setHeader("content-type", "text/html; charset=utf-8"); //Anfrage wird als HTML Text Element dargestellt
-            _response.setHeader("Access-Control-Allow-Origin", "*");
-            var url = Url.parse(_request.url, true);
-            // _response.write(responseJson);
+        _response.setHeader("content-type", "text/html; charset=utf-8"); //Anfrage wird als HTML Text Element dargestellt
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+        let refUrl = new URL(_request.url, "https://myfirsttestserverisnowlive.herokuapp.com/");
+        var url = Url.parse(_request.url, true);
+        if (refUrl.pathname == "/html") {
+            console.log("jea im fine");
             for (let key in url.query) {
-                console.log(key + " : " + url.query[key]);
-                _response.write(key + " : " + url.query[key] + "<br/>");
+                _response.write("<p>" + key + " : " + url.query[key] + "<p/>");
             }
+            _response.end();
+        }
+        else if (refUrl.pathname == "/json") {
             let responseJson = JSON.stringify(url.query);
             _response.write(responseJson);
             _response.end();
         }
-        _response.end();
     }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
 //# sourceMappingURL=script.js.map
