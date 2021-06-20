@@ -3,10 +3,13 @@
     "version": "1.0.0",
     "description": "My first Test",
     "main": "script.js",
-    "dependencies": {},
+    "dependencies": {
+        "@types/mongodb": "^3.6.18",
+        "mongodb": "^3.6.9"
+    },
     "devDependencies": {},
     "scripts": {
-        "start": "node Aufgabe_1_Server/script.js"
+        "start": "node FinalServerTask/script.js"
     },
     "repository": {
         "type": "git",

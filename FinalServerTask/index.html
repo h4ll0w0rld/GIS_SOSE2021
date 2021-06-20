@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="SendScript.js" defer></script>
+</head>
+
+<body>
+    <form id="formData">
+        <label for="fname">Name:</label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="secondName">Nachname: </label>
+        <input type="text" name="secondName" id="secondName"><br><br>
+        <label for="age">Alter</label>
+        <input type="number" name="age" id="age"><br><br>
+        <label for="registration">MartrikelNr</label>
+        <input type="number" name="registration" id="registration">
+        <input type="button" value="SendData" id="SendDataButton">
+        <input type="button" value="ShowData" id="ShowDataButton">
+    </form>
+    <div id="response"></div>
+
+</body>
+
+</html>
