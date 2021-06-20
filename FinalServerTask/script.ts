@@ -73,10 +73,9 @@ export namespace P_3_1Server {
 
     }
     async function findStudents(): Promise<string> {
-        let allStudents = await orders.find().toArray();
+        var allStudents = await orders.find().toArray();
         let studentJson: string = JSON.stringify(allStudents);
         return studentJson;
-
 
     }
 

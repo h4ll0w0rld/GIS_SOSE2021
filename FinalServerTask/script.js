@@ -55,7 +55,7 @@ var P_3_1Server;
         orders.insert(dataUrl.query);
     }
     async function findStudents() {
-        let allStudents = await orders.find().toArray();
+        var allStudents = await orders.find().toArray();
         let studentJson = JSON.stringify(allStudents);
         return studentJson;
     }
