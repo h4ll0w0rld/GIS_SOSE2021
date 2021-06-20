@@ -3,7 +3,6 @@ import * as Url from "url";
 import * as Mongo from "mongodb";
 
 export namespace P_3_1Server {
-    // let url: string;
     let orders: Mongo.Collection;
     let dataBaseUrl: string = "mongodb+srv://admin:hallodasistmeincluster@cluster0.0enhn.mongodb.net/Test?retryWrites=true&w=majority";
 
@@ -45,7 +44,6 @@ export namespace P_3_1Server {
 
         } else if (refUrl.pathname == "/show") {
 
-           // _response.setHeader("content-type", "application/json; charset=utf-8");
             _response.write(JSON.stringify(await (orders.find().toArray())));
             _response.end();
 
@@ -72,12 +70,5 @@ export namespace P_3_1Server {
 
 
     }
-    // async function findStudents(): Promise<string> {
-    //     var allStudents = await orders.find().toArray();
-    //     let studentJson: string = JSON.stringify(allStudents);
-    //     return studentJson;
-
-    // }
-
-
+   
 }

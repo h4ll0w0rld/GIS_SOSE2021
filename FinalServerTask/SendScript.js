@@ -7,23 +7,20 @@ var SendScript;
     let showButton = document.getElementById("ShowDataButton");
     showButton.addEventListener("click", showData);
     async function sendTheData() {
-        console.log("Jup");
         let userData = new FormData(document.forms[0]);
         let query = new URLSearchParams(userData);
         url += "?" + query.toString();
-        console.log(url);
         let response = await fetch(url, { method: "get" });
         let responseText = await response.text();
+        console.log("Data has been send!");
         return responseText;
     }
     async function sendData() {
         url = "https://myfirsttestserverisnowlive.herokuapp.com/send";
         await sendTheData();
-        console.log("Hello Its me");
     }
     async function showData() {
         url = "https://myfirsttestserverisnowlive.herokuapp.com/show";
-        // let responseTe = await sendTheData
         showResponsee();
     }
     async function showResponsee() {

@@ -6,7 +6,6 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var P_3_1Server;
 (function (P_3_1Server) {
-    // let url: string;
     let orders;
     let dataBaseUrl = "mongodb+srv://admin:hallodasistmeincluster@cluster0.0enhn.mongodb.net/Test?retryWrites=true&w=majority";
     let port = Number(process.env.PORT);
@@ -38,7 +37,6 @@ var P_3_1Server;
             _response.end();
         }
         else if (refUrl.pathname == "/show") {
-            // _response.setHeader("content-type", "application/json; charset=utf-8");
             _response.write(JSON.stringify(await (orders.find().toArray())));
             _response.end();
         }
@@ -54,10 +52,5 @@ var P_3_1Server;
         console.log(dataUrl.query);
         orders.insert(dataUrl.query);
     }
-    // async function findStudents(): Promise<string> {
-    //     var allStudents = await orders.find().toArray();
-    //     let studentJson: string = JSON.stringify(allStudents);
-    //     return studentJson;
-    // }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
 //# sourceMappingURL=script.js.map
