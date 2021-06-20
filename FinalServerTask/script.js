@@ -38,8 +38,8 @@ var P_3_1Server;
             _response.end();
         }
         else if (refUrl.pathname == "/show") {
-            let allStudents = JSON.stringify(orders.find());
-            _response.write(allStudents);
+            // let allStudents: string = JSON.stringify(orders.find());
+            // _response.write(allStudents);
             _response.end();
         }
     }

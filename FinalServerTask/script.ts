@@ -45,10 +45,10 @@ export namespace P_3_1Server {
 
         } else if (refUrl.pathname == "/show") {
 
-            let allStudents: string = JSON.stringify(orders.find());
+           // let allStudents: string = JSON.stringify(orders.find());
            
 
-            _response.write(allStudents);
+           // _response.write(allStudents);
             _response.end();
 
         }
