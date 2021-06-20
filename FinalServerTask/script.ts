@@ -28,7 +28,7 @@ export namespace P_3_1Server {
     }
 
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {          //Anfragen werden hier "gefagen"
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse):Promise< void> {          //Anfragen werden hier "gefagen"
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");                //Anfrage wird als HTML Text Element dargestellt
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -45,8 +45,8 @@ export namespace P_3_1Server {
 
         } else if (refUrl.pathname == "/show") {
 
-            _response.setHeader("content-type", "application/json; charset=utf-8");
-            _response.write(findStudents());
+           // _response.setHeader("content-type", "application/json; charset=utf-8");
+            _response.write(JSON.stringify(await (orders.find().toArray())));
             _response.end();
 
         }
@@ -72,12 +72,12 @@ export namespace P_3_1Server {
 
 
     }
-    async function findStudents(): Promise<string> {
-        var allStudents = await orders.find().toArray();
-        let studentJson: string = JSON.stringify(allStudents);
-        return studentJson;
+    // async function findStudents(): Promise<string> {
+    //     var allStudents = await orders.find().toArray();
+    //     let studentJson: string = JSON.stringify(allStudents);
+    //     return studentJson;
 
-    }
+    // }
 
 
 }
