@@ -38,6 +38,7 @@ var P_3_1Server;
             _response.end();
         }
         else if (refUrl.pathname == "/show") {
+            _response.setHeader("content-type", "application/json; charset=utf-8");
             _response.write(findStudents());
             _response.end();
         }
@@ -54,8 +55,8 @@ var P_3_1Server;
         orders.insert(dataUrl.query);
     }
     async function findStudents() {
-        let allStudents = orders.find();
-        let studentJson = JSON.stringify(allStudents.toArray());
+        let allStudents = orders.find().toArray();
+        let studentJson = JSON.stringify(allStudents);
         return studentJson;
     }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));

@@ -44,7 +44,8 @@ export namespace P_3_1Server {
             _response.end();
 
         } else if (refUrl.pathname == "/show") {
-
+            
+            _response.setHeader("content-type", "application/json; charset=utf-8");
             _response.write(findStudents());
             _response.end();
 
@@ -72,8 +73,8 @@ export namespace P_3_1Server {
 
     }
     async function findStudents(): Promise<string> {
-        let allStudents: Mongo.Cursor = orders.find();
-        let studentJson: string = JSON.stringify(allStudents.toArray());
+        let allStudents = orders.find().toArray();
+        let studentJson: string = JSON.stringify(allStudents);
         return studentJson;
 
 
