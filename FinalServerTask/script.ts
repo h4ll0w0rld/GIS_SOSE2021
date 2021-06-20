@@ -45,10 +45,7 @@ export namespace P_3_1Server {
 
         } else if (refUrl.pathname == "/show") {
 
-            let allStudents: string = JSON.stringify(orders.find());
-
-
-            _response.write(allStudents);
+            _response.write(findStudents());
             _response.end();
 
         }
@@ -71,6 +68,13 @@ export namespace P_3_1Server {
     function writeToDatabase(dataUrl: Url.UrlWithParsedQuery): void {
         console.log(dataUrl.query);
         orders.insert(dataUrl.query);
+
+
+    }
+    async function findStudents(): Promise<string> {
+        let allStudents: Mongo.Cursor = orders.find();
+        let studentJson: string = JSON.stringify(allStudents.toArray());
+        return studentJson;
 
 
     }

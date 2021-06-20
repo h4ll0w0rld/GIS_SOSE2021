@@ -38,8 +38,7 @@ var P_3_1Server;
             _response.end();
         }
         else if (refUrl.pathname == "/show") {
-            let allStudents = JSON.stringify(orders.find());
-            _response.write(allStudents);
+            _response.write(findStudents());
             _response.end();
         }
     }
@@ -53,6 +52,11 @@ var P_3_1Server;
     function writeToDatabase(dataUrl) {
         console.log(dataUrl.query);
         orders.insert(dataUrl.query);
+    }
+    async function findStudents() {
+        let allStudents = orders.find();
+        let studentJson = JSON.stringify(allStudents.toArray());
+        return studentJson;
     }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
 //# sourceMappingURL=script.js.map
