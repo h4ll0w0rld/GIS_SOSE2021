@@ -1,0 +1,11 @@
+.PlayingCard {
+    width: 200px;
+}
+
+#PlayingBackground {
+    width: 1000px;
+    height: 1000px;
+    background-color: cadetblue;
+    margin-left: auto;
+    margin-right: auto;
+}
