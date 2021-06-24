@@ -38,7 +38,7 @@ export namespace ModulpruefungGis {
 
         if (refUrl.pathname == "/getData") {
             console.log("GIB MIR DATEN ! :D ");
-          //  _response.write(JSON.stringify(await (playingCarts.find().toArray())));
+            _response.write(JSON.stringify(await (playingCarts.find().toArray())));
 
             _response.end();
 
@@ -57,7 +57,7 @@ export namespace ModulpruefungGis {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
 
-        playingCarts = mongoClient.db("Test").collection("PlayingCarts");
+        playingCarts = mongoClient.db("Test3").collection("PlayingCarts");
         console.log("Database is connected", playingCarts != undefined);
 
     }

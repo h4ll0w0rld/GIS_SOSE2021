@@ -33,7 +33,7 @@ var ModulpruefungGis;
         console.log(url);
         if (refUrl.pathname == "/getData") {
             console.log("GIB MIR DATEN ! :D ");
-            //  _response.write(JSON.stringify(await (playingCarts.find().toArray())));
+            _response.write(JSON.stringify(await (playingCarts.find().toArray())));
             _response.end();
         }
         else if (refUrl.pathname == "/show") {
@@ -45,7 +45,7 @@ var ModulpruefungGis;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        playingCarts = mongoClient.db("Test").collection("PlayingCarts");
+        playingCarts = mongoClient.db("Test3").collection("PlayingCarts");
         console.log("Database is connected", playingCarts != undefined);
     }
     function writeToDatabase(dataUrl) {
