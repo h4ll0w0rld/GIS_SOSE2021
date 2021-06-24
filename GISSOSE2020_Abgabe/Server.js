@@ -45,7 +45,7 @@ var ModulpruefungGis;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        playingCarts = mongoClient.db("Test3").collection("PlayingCarts");
+        playingCarts = mongoClient.db("Test").collection("PlayingCarts");
         console.log("Database is connected", playingCarts != undefined);
     }
     function writeToDatabase(dataUrl) {
