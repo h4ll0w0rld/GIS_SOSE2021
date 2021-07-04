@@ -1,18 +1,23 @@
 namespace ModulpruefungGis {
     let url: string = "https://myfirsttestserverisnowlive.herokuapp.com";
 
-    getData();
-    export async function getData(): Promise<void> {
+    let sendButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insertButton");
+    sendButton.addEventListener("click", sendData);
+
+
+
+
+
+    export async function getData(): Promise<PlayingCard[]> {
         console.log("i am starting");
         url += "/getData";
         console.log(url);
         let response: Response = await fetch(url, { method: "get" });
         let responseText: string = await response.text();
-        console.log(responseText);
-        //let responseJson: PlayingCart[] = JSON.parse(responseText);
-        // console.log(responseJson != null);
 
-        // return responseJson;
+        let responsePlayingCards: PlayingCard[] = JSON.parse(responseText);
+
+        return responsePlayingCards;
 
     }
 
@@ -20,7 +25,13 @@ namespace ModulpruefungGis {
 
 
     async function sendData(): Promise<void> {
-        fetchServer();
+        let userData: FormData = new FormData(document.forms[0]);
+        let query: URLSearchParams = new URLSearchParams(<any>userData);
+        url += "/save" + "?" + query.toString();
+        let response: Response = await fetch(url, { method: "get" });
+        let responseText: string = await response.text();
+        
+
 
     }
 

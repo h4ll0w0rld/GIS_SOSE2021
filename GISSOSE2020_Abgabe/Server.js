@@ -36,8 +36,8 @@ var ModulpruefungGis;
             _response.write(JSON.stringify(await (playingCarts.find().toArray())));
             _response.end();
         }
-        else if (refUrl.pathname == "/show") {
-            _response.write(JSON.stringify(await (playingCarts.find().toArray())));
+        else if (refUrl.pathname == "/save ") {
+            writeToDatabase(url);
             _response.end();
         }
     }

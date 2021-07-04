@@ -42,9 +42,9 @@ export namespace ModulpruefungGis {
 
             _response.end();
 
-        } else if (refUrl.pathname == "/show") {
+        } else if (refUrl.pathname == "/save ") {
 
-            _response.write(JSON.stringify(await (playingCarts.find().toArray())));
+            writeToDatabase(url);
             _response.end();
 
         }

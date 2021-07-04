@@ -1,11 +1,41 @@
 .PlayingCard {
-    width: 200px;
+    width: 183px;
+}
+
+.cardDiv {
+    float: left;
+    width: 183px;
+    height: 183px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 #PlayingBackground {
-    width: 1000px;
-    height: 1000px;
+    width: 800px;
+    height: 800px;
     background-color: cadetblue;
     margin-left: auto;
     margin-right: auto;
+}
+
+#Menu {
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    font-size: x-large;
+    padding-bottom: 2.5rem;
+}
+
+#Menu a {
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+
+#Headline {
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
 }
