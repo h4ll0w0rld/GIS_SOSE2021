@@ -2,14 +2,18 @@
 
 namespace ModulpruefungGis {
     let playingArea: HTMLDivElement = <HTMLDivElement>document.getElementById("PlayingBackground");
+    let selectCards: HTMLDivElement = <HTMLDivElement>document.getElementById("selectCards");
 
-   // showCards();
+    if (document.body.id == "playPage") {
+        stardGame();
+
+    } else if (document.body.id == "adminpage") {
+        showCards();
+    }
 
 
 
-
-
-    async function showCards(): Promise<PlayingCard[]> {
+    async function stardGame(): Promise<PlayingCard[]> {
         let playingCarts: PlayingCard[] = await ModulpruefungGis.getData();
         let playingCardsCopy: PlayingCard[] = playingCarts;
         let cardCover: PlayingCard = playingCardsCopy[0];
@@ -41,9 +45,40 @@ namespace ModulpruefungGis {
 
     }
 
+
+    async function showCards(): Promise<void> {
+        let playingCarts: CollectionData[] = await ModulpruefungGis.getData();
+        for (let i: number = 0; i < playingCarts.length; i++) {
+            let image: HTMLImageElement = document.createElement("img");
+            let delButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
+
+            image.src = playingCarts[i].src;
+            image.classList.add("showCards");
+
+            delButton.className = "delButton";
+           
+            delButton.addEventListener("click", async function (): Promise<void> {
+                url = baseUrl + "/delete?_id=" + playingCarts[i].id;
+                console.log("deleted");
+                await ModulpruefungGis.fetchData(url);
+
+            });
+
+            delButton.appendChild(document.createTextNode("Delete"));
+         
+            selectCards.append(image);
+            selectCards.appendChild(delButton);
+           
+
+        }
+    }
+
+
+
     let firstImgRes: HTMLImageElement;
     let secondImgRes: HTMLImageElement;
     let firstSrc: string;
+
 
 
     async function cardClick(klick: MouseEvent): Promise<void> {
@@ -113,6 +148,11 @@ namespace ModulpruefungGis {
         src: string;
         location: string;
         date: string;
+
+    }
+    export interface CollectionData extends PlayingCard {
+        id: string;
+
 
     }
 }

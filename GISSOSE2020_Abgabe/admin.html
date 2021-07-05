@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="stylesheet" href="style.css">
     <script src="ServerAndData.js" defer></script>
     <script src="script.js" defer></script>
 </head>
@@ -15,15 +16,16 @@
 
     <form id="formData">
         <label for="src">Bildlink</label>
-        <input type="text" name="src" id="src">
+        <input type="text" name="src" class="input"> <br>
         <label for="location">Location name</label>
-        <input type="text" name="location" id="location">
+        <input type="text" name="location" class="input"><br>
         <label for="date">Date</label>
-        <input type="text" name="date" id="date">
+        <input type="text" name="date" class="input"><br>
         <input type="button" value="insertData" id="insertButton">
         <input type="button" value="ShowData" id="ShowDataButton">
-
     </form>
+    <div id="selectCards"></div>
+
 
 
 

@@ -1,25 +1,37 @@
 namespace ModulpruefungGis {
-    let url: string = "https://myfirsttestserverisnowlive.herokuapp.com";
+    export let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com"
+    let url: string = baseUrl;
 
 
     if (document.body.id == "adminpage") {
-        let sendButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insertButton");
-        sendButton.addEventListener("click", saveData);
+
+        let saveNewImage: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insertButton");
+        saveNewImage.addEventListener("click", function (): void {
+            url = baseUrl + "/save";
+            saveData();
+        });
+
+
+
+
+    }
+    export async function fetchData(url: string): Promise<string> {
+        console.log(url);
+        let response: Response = await fetch(url, { method: "get" });
+        let responseText: string = await response.text();
+
+        return responseText;
+
     }
 
 
 
 
-    export async function getData(): Promise<PlayingCard[]> {
+    export async function getData(): Promise<CollectionData[]> {
         console.log("i am starting");
-        url += "/getData";
-        console.log(url);
-        let response: Response = await fetch(url, { method: "get" });
-        let responseText: string = await response.text();
+        url = baseUrl + "/getData";
 
-        let responsePlayingCards: PlayingCard[] = JSON.parse(responseText);
-
-        return responsePlayingCards;
+        return JSON.parse(await fetchData(url));
 
     }
 
@@ -29,25 +41,22 @@ namespace ModulpruefungGis {
     async function saveData(): Promise<void> {
         if (document.body.id == "adminpage") {
             let userData: FormData = new FormData(document.forms[0]);
-            console.log(document.forms[0]);
-
             let query: URLSearchParams = new URLSearchParams(<any>userData);
-            console.log(query.toString);
-            url = "https://myfirsttestserverisnowlive.herokuapp.com/save";
             url += "?" + query.toString();
-            console.log(url);
-            let response: Response = await fetch(url, { method: "get" });
-            let responseText: string = await response.text();
-            console.log(responseText);
+
+            console.log(await fetchData(url));
 
         }
 
     }
 
-    // async function fetchServer(): Promise<void> {
 
 
-    // }
+    export function deleteData(Card: PlayingCard): void {
+        url = baseUrl + "/delete";
+        url += "?";
+
+    }
 
 
 

@@ -41,6 +41,9 @@ var ModulpruefungGis;
             _response.write("hey i am here");
             _response.end();
         }
+        else if (refUrl.pathname == "/delete") {
+            removeImage(url);
+        }
     }
     async function connectRoDatabase(_url) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -52,6 +55,9 @@ var ModulpruefungGis;
     function writeToDatabase(dataUrl) {
         //  console.log(dataUrl.query);
         playingCarts.insert(dataUrl.query);
+    }
+    function removeImage(dataUrl) {
+        playingCarts.remove(dataUrl.query);
     }
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));
 //# sourceMappingURL=Server.js.map

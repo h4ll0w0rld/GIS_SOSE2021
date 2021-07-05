@@ -2,8 +2,14 @@
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let playingArea = document.getElementById("PlayingBackground");
-    // showCards();
-    async function showCards() {
+    let selectCards = document.getElementById("selectCards");
+    if (document.body.id == "playPage") {
+        stardGame();
+    }
+    else if (document.body.id == "adminpage") {
+        showCards();
+    }
+    async function stardGame() {
         let playingCarts = await ModulpruefungGis.getData();
         let playingCardsCopy = playingCarts;
         let cardCover = playingCardsCopy[0];
@@ -24,6 +30,24 @@ var ModulpruefungGis;
             final.splice(randomNumb, 1);
         }
         return playingCarts;
+    }
+    async function showCards() {
+        let playingCarts = await ModulpruefungGis.getData();
+        for (let i = 0; i < playingCarts.length; i++) {
+            let image = document.createElement("img");
+            let delButton = document.createElement("button");
+            image.src = playingCarts[i].src;
+            image.classList.add("showCards");
+            delButton.className = "delButton";
+            delButton.addEventListener("click", async function () {
+                url = ModulpruefungGis.baseUrl + "/delete?_id=" + playingCarts[i].id;
+                console.log("deleted");
+                await ModulpruefungGis.fetchData(url);
+            });
+            delButton.appendChild(document.createTextNode("Delete"));
+            selectCards.append(image);
+            selectCards.appendChild(delButton);
+        }
     }
     let firstImgRes;
     let secondImgRes;

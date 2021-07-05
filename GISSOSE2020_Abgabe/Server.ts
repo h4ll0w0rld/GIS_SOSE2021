@@ -48,6 +48,8 @@ export namespace ModulpruefungGis {
             _response.write("hey i am here");
             _response.end();
 
+        } else if (refUrl.pathname == "/delete") {
+            removeImage(url);
         }
 
     }
@@ -68,9 +70,13 @@ export namespace ModulpruefungGis {
 
 
     function writeToDatabase(dataUrl: Url.UrlWithParsedQuery): void {
-      //  console.log(dataUrl.query);
+        //  console.log(dataUrl.query);
         playingCarts.insert(dataUrl.query);
 
+
+    }
+    function removeImage(dataUrl: Url.UrlWithParsedQuery): void {
+        playingCarts.remove(dataUrl.query);
 
     }
 
