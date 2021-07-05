@@ -2,7 +2,9 @@
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let playingArea = document.getElementById("PlayingBackground");
-    showCards();
+    if (document.body.id == "playingpage") {
+        showCards();
+    }
     async function showCards() {
         let playingCarts = await ModulpruefungGis.getData();
         let playingCardsCopy = playingCarts;
@@ -33,21 +35,25 @@ var ModulpruefungGis;
             firstImgRes = klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
+            firstImgRes.removeEventListener("click", cardClick);
         }
         else if (firstImgRes != null && secondImgRes == null) {
             secondImgRes = klick.currentTarget;
             secondImgRes.src = secondImgRes.id;
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
-                console.log("RICHTIG");
-                firstImgRes.remove();
-                secondImgRes.remove();
-                firstImgRes = null;
-                secondImgRes = null;
+                setTimeout(() => {
+                    console.log("RICHTIG");
+                    firstImgRes.remove();
+                    secondImgRes.remove();
+                    firstImgRes = null;
+                    secondImgRes = null;
+                }, 800);
             }
             else if (firstImgRes != null && secondImgRes != null) {
                 setTimeout(() => {
                     firstImgRes.src = firstSrc;
                     secondImgRes.src = firstSrc;
+                    firstImgRes.addEventListener("click", cardClick);
                     firstImgRes = null;
                     secondImgRes = null;
                     console.log("alles weg :)");

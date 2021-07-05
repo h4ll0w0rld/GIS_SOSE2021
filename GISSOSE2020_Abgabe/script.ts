@@ -2,9 +2,11 @@
 
 namespace ModulpruefungGis {
     let playingArea: HTMLDivElement = <HTMLDivElement>document.getElementById("PlayingBackground");
+    if (document.body.id == "playingpage") {
+        showCards();
+    }
 
 
-    showCards();
 
 
 
@@ -54,7 +56,7 @@ namespace ModulpruefungGis {
             firstImgRes = <HTMLImageElement>klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
-
+            firstImgRes.removeEventListener("click", cardClick);
 
         } else if (firstImgRes != null && secondImgRes == null) {
 
@@ -63,32 +65,45 @@ namespace ModulpruefungGis {
 
 
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
-                console.log("RICHTIG");
-                firstImgRes.remove();
-                secondImgRes.remove();
-                firstImgRes = null;
-                secondImgRes = null;
+                setTimeout(() => {
 
+                    console.log("RICHTIG");
+                    firstImgRes.remove();
+                    secondImgRes.remove();
+                    firstImgRes = null;
+                    secondImgRes = null;
+                }, 800);
 
 
 
             } else if (firstImgRes != null && secondImgRes != null) {
+
                 setTimeout(() => {
+
                     firstImgRes.src = firstSrc;
                     secondImgRes.src = firstSrc;
+                    firstImgRes.addEventListener("click", cardClick);
                     firstImgRes = null;
                     secondImgRes = null;
-
                     console.log("alles weg :)");
 
                 }, 800);
+
+
+
+
+
+
             }
 
 
 
-
-
         }
+
+
+
+
+
 
 
     }
@@ -100,6 +115,4 @@ namespace ModulpruefungGis {
         date: string;
 
     }
-
-
 }

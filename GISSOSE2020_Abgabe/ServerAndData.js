@@ -2,8 +2,10 @@
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let url = "https://myfirsttestserverisnowlive.herokuapp.com";
-    let sendButton = document.getElementById("insertButton");
-    sendButton.addEventListener("click", sendData);
+    if (document.body.id == "adminpage") {
+        let sendButton = document.getElementById("insertButton");
+        sendButton.addEventListener("click", sendData);
+    }
     async function getData() {
         console.log("i am starting");
         url += "/getData";
@@ -17,11 +19,11 @@ var ModulpruefungGis;
     async function sendData() {
         let userData = new FormData(document.forms[0]);
         let query = new URLSearchParams(userData);
-        url += "/save" + "?" + query.toString();
+        url += "/send" + "?" + query.toString();
         let response = await fetch(url, { method: "get" });
         let responseText = await response.text();
     }
-    async function fetchServer() {
-    }
+    // async function fetchServer(): Promise<void> {
+    // }
 })(ModulpruefungGis || (ModulpruefungGis = {}));
 //# sourceMappingURL=ServerAndData.js.map

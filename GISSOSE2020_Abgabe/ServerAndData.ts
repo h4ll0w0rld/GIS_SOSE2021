@@ -1,9 +1,11 @@
 namespace ModulpruefungGis {
     let url: string = "https://myfirsttestserverisnowlive.herokuapp.com";
 
-    let sendButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insertButton");
-    sendButton.addEventListener("click", sendData);
 
+    if (document.body.id == "adminpage") {
+        let sendButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insertButton");
+        sendButton.addEventListener("click", sendData);
+    }
 
 
 
@@ -27,18 +29,18 @@ namespace ModulpruefungGis {
     async function sendData(): Promise<void> {
         let userData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>userData);
-        url += "/save" + "?" + query.toString();
+        url += "/send" + "?" + query.toString();
         let response: Response = await fetch(url, { method: "get" });
         let responseText: string = await response.text();
-        
 
-
-    }
-
-    async function fetchServer(): Promise<void> {
 
 
     }
+
+    // async function fetchServer(): Promise<void> {
+
+
+    // }
 
 
 
