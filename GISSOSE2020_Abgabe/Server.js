@@ -38,10 +38,10 @@ var ModulpruefungGis;
         }
         else if (refUrl.pathname == "/save ") {
             writeToDatabase(url);
+            _response.write("hey i am here");
             _response.end();
         }
     }
-    //change"!!!
     async function connectRoDatabase(_url) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
@@ -50,7 +50,7 @@ var ModulpruefungGis;
         console.log("Database is connected", playingCarts != undefined);
     }
     function writeToDatabase(dataUrl) {
-        console.log(dataUrl.query);
+        //  console.log(dataUrl.query);
         playingCarts.insert(dataUrl.query);
     }
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));

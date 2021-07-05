@@ -18,10 +18,14 @@ var ModulpruefungGis;
     ModulpruefungGis.getData = getData;
     async function saveData() {
         let userData = new FormData(document.forms[0]);
+        console.log(document.forms[0]);
         let query = new URLSearchParams(userData);
-        url += "/save" + "?" + query.toString();
+        console.log(query);
+        url = "https://myfirsttestserverisnowlive.herokuapp.com/save";
+        url += "?" + query.toString();
         let response = await fetch(url, { method: "get" });
         let responseText = await response.text();
+        console.log(response);
     }
     // async function fetchServer(): Promise<void> {
     // }

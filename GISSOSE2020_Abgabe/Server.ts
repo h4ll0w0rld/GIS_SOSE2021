@@ -45,13 +45,14 @@ export namespace ModulpruefungGis {
         } else if (refUrl.pathname == "/save ") {
 
             writeToDatabase(url);
+            _response.write("hey i am here");
             _response.end();
 
         }
 
     }
 
-    //change"!!!
+
 
 
     async function connectRoDatabase(_url: string): Promise<void> {
@@ -67,7 +68,7 @@ export namespace ModulpruefungGis {
 
 
     function writeToDatabase(dataUrl: Url.UrlWithParsedQuery): void {
-        console.log(dataUrl.query);
+      //  console.log(dataUrl.query);
         playingCarts.insert(dataUrl.query);
 
 
