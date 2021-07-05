@@ -14,6 +14,7 @@ namespace SendScript {
     async function sendTheData(): Promise<string> {
         let userData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>userData);
+        console.log(query.toString);
         url += "?" + query.toString();
         let response: Response = await fetch(url, { method: "get" });
         let responseText: string = await response.text();
