@@ -43,14 +43,15 @@ export namespace ModulpruefungGis {
             _response.end();
 
         } else if (refUrl.pathname == "/save") {
+            
 
-            writeToDatabase(url);
             _response.write("hey i am here");
+            playingCarts.insert(url.query);
             _response.end();
 
         } else if (refUrl.pathname == "/delete") {
             console.log("hey ich lösche");
-            removeImage(url);
+            playingCarts.deleteOne({_id: new Mongo.ObjectId(refUrl.searchParams.get("_id"))});
         }
 
     }
@@ -70,17 +71,5 @@ export namespace ModulpruefungGis {
 
 
 
-    function writeToDatabase(dataUrl: Url.UrlWithParsedQuery): void {
-        //  console.log(dataUrl.query);
-        playingCarts.insert(dataUrl.query);
-
-
-    }
-    function removeImage(dataUrl: Url.UrlWithParsedQuery): void {
-        console.log( dataUrl.query);
-
-       // playingCarts.deleteOne({ _id: new Mongo.ObjectId(dataUrl.query) });
-
-    }
-
+  
 }
