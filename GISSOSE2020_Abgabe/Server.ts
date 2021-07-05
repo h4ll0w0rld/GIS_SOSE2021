@@ -77,7 +77,7 @@ export namespace ModulpruefungGis {
 
     }
     function removeImage(dataUrl: Url.UrlWithParsedQuery): void {
-        playingCarts.remove(dataUrl.query);
+        playingCarts.deleteOne(dataUrl.query);
 
     }
 

@@ -58,7 +58,7 @@ var ModulpruefungGis;
         playingCarts.insert(dataUrl.query);
     }
     function removeImage(dataUrl) {
-        playingCarts.remove(dataUrl.query);
+        playingCarts.deleteOne(dataUrl.query);
     }
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));
 //# sourceMappingURL=Server.js.map
