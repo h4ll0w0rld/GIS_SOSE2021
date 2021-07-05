@@ -17,23 +17,24 @@ namespace ModulpruefungGis {
 
 
     async function stardGame(): Promise<PlayingCard[]> {
-        let playingCarts: PlayingCard[] = await ModulpruefungGis.getData();
-        let playingCardsCopy: PlayingCard[] = playingCarts;
-        let cardCover: PlayingCard = playingCardsCopy[0];
+        let playingCards: PlayingCard[] = await ModulpruefungGis.getData();
+        playingCards = playingCards.concat(playingCards);
+        // let playingCardsCopy: PlayingCard[] = playingCarts;
+        let cardCover: PlayingCard = playingCards[0];
 
-        let final: PlayingCard[] = playingCarts.concat(playingCardsCopy);
+        // let final: PlayingCard[] = playingCarts.concat(playingCardsCopy);
 
-        for (let i: number = 0; i < final.length; i + 1) {
+        for (let i: number = 0; i < playingCards.length; i + 1) {
             let playingSlot: HTMLDivElement = document.createElement("div");
             let image: HTMLImageElement = document.createElement("img");
-            let randomNumb: number = Math.floor(Math.random() * final.length);
-            console.log(randomNumb);
-            image.id = final[randomNumb].src;
-            image.src = cardCover.src;
+            let randomNumb: number = Math.floor(Math.random() * playingCards.length);
+        
             playingSlot.classList.add("cardDiv");
-            image.classList.add("PlayingCard");
-            image.alt = "Bild" + randomNumb;
 
+            image.id = playingCards[randomNumb].src;
+            image.src = cardCover.src;
+            image.classList.add("PlayingCard");
+            image.alt = "Image" + i;
             image.addEventListener("click", cardClick);
 
             playingArea.append(playingSlot);
@@ -41,10 +42,10 @@ namespace ModulpruefungGis {
 
 
 
-            final.splice(randomNumb, 1);
+            playingCards.splice(randomNumb, 1);
 
         }
-        return playingCarts;
+        return playingCards;
 
     }
 
@@ -59,9 +60,8 @@ namespace ModulpruefungGis {
             image.classList.add("showCards");
 
             delButton.className = "delButton";
-
             delButton.addEventListener("click", async function (): Promise<void> {
-                console.log(playingCarts[i]._id);
+
                 let url: string = baseUrl + "/delete?_id=" + playingCarts[i]._id;
                 console.log("deleted");
                 await ModulpruefungGis.fetchData(url);
@@ -88,7 +88,6 @@ namespace ModulpruefungGis {
     async function cardClick(klick: MouseEvent): Promise<void> {
 
 
-
         if (firstImgRes == null) {
 
             firstImgRes = <HTMLImageElement>klick.currentTarget;
@@ -105,7 +104,6 @@ namespace ModulpruefungGis {
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
                 setTimeout(() => {
 
-                    console.log("RICHTIG");
                     firstImgRes.remove();
                     secondImgRes.remove();
                     firstImgRes = null;
@@ -129,21 +127,8 @@ namespace ModulpruefungGis {
 
                 }, 800);
 
-
-
-
-
-
             }
-
-
-
         }
-
-
-
-
-
 
     }
 

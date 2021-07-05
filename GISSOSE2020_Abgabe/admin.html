@@ -12,15 +12,21 @@
 </head>
 
 <body id="adminpage">
-    <header></header>
+    <header>
+        <div id="Menu">
+            <a href="spielseite.html"> Memory</a>
+            <a href="score.html"> Bestscore</a>
+            <a href="admin.html"> Admin</a>
+        </div>
+    </header>
 
     <form id="formData">
         <label for="src">Bildlink</label>
-        <input type="text" name="src" class="input"> <br>
+        <input type="text" name="src" class="input">
         <label for="location">Location name</label>
-        <input type="text" name="location" class="input"><br>
+        <input type="text" name="location" class="input">
         <label for="date">Date</label>
-        <input type="text" name="date" class="input"><br>
+        <input type="text" name="date" class="input">
         <input type="button" value="insertData" id="insertButton">
         <input type="button" value="ShowData" id="ShowDataButton">
     </form>

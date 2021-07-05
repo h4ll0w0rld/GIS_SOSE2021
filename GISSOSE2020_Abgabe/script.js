@@ -11,26 +11,26 @@ var ModulpruefungGis;
         showCards();
     }
     async function stardGame() {
-        let playingCarts = await ModulpruefungGis.getData();
-        let playingCardsCopy = playingCarts;
-        let cardCover = playingCardsCopy[0];
-        let final = playingCarts.concat(playingCardsCopy);
-        for (let i = 0; i < final.length; i + 1) {
+        let playingCards = await ModulpruefungGis.getData();
+        playingCards = playingCards.concat(playingCards);
+        // let playingCardsCopy: PlayingCard[] = playingCarts;
+        let cardCover = playingCards[0];
+        // let final: PlayingCard[] = playingCarts.concat(playingCardsCopy);
+        for (let i = 0; i < playingCards.length; i + 1) {
             let playingSlot = document.createElement("div");
             let image = document.createElement("img");
-            let randomNumb = Math.floor(Math.random() * final.length);
-            console.log(randomNumb);
-            image.id = final[randomNumb].src;
-            image.src = cardCover.src;
+            let randomNumb = Math.floor(Math.random() * playingCards.length);
             playingSlot.classList.add("cardDiv");
+            image.id = playingCards[randomNumb].src;
+            image.src = cardCover.src;
             image.classList.add("PlayingCard");
-            image.alt = "Bild" + randomNumb;
+            image.alt = "Image" + i;
             image.addEventListener("click", cardClick);
             playingArea.append(playingSlot);
             playingSlot.append(image);
-            final.splice(randomNumb, 1);
+            playingCards.splice(randomNumb, 1);
         }
-        return playingCarts;
+        return playingCards;
     }
     async function showCards() {
         let playingCarts = await ModulpruefungGis.getData();
@@ -41,7 +41,6 @@ var ModulpruefungGis;
             image.classList.add("showCards");
             delButton.className = "delButton";
             delButton.addEventListener("click", async function () {
-                console.log(playingCarts[i]._id);
                 let url = ModulpruefungGis.baseUrl + "/delete?_id=" + playingCarts[i]._id;
                 console.log("deleted");
                 await ModulpruefungGis.fetchData(url);
@@ -66,7 +65,6 @@ var ModulpruefungGis;
             secondImgRes.src = secondImgRes.id;
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
                 setTimeout(() => {
-                    console.log("RICHTIG");
                     firstImgRes.remove();
                     secondImgRes.remove();
                     firstImgRes = null;
