@@ -58,7 +58,7 @@ var ModulpruefungGis;
         playingCarts.insert(dataUrl.query);
     }
     function removeImage(dataUrl) {
-        console.log("das ist die ID" + dataUrl.query);
+        console.log(dataUrl.query);
         // playingCarts.deleteOne({ _id: new Mongo.ObjectId(dataUrl.query) });
     }
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));

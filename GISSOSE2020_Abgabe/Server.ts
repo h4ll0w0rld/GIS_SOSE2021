@@ -77,7 +77,7 @@ export namespace ModulpruefungGis {
 
     }
     function removeImage(dataUrl: Url.UrlWithParsedQuery): void {
-        console.log("das ist die ID" + dataUrl.query);
+        console.log( dataUrl.query);
 
        // playingCarts.deleteOne({ _id: new Mongo.ObjectId(dataUrl.query) });
 
