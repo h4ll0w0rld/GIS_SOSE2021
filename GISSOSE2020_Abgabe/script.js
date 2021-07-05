@@ -3,6 +3,7 @@ var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let playingArea = document.getElementById("PlayingBackground");
     let selectCards = document.getElementById("selectCards");
+    ModulpruefungGis.baseUrl = "https://myfirsttestserverisnowlive.herokuapp.com";
     if (document.body.id == "playPage") {
         stardGame();
     }
@@ -40,7 +41,8 @@ var ModulpruefungGis;
             image.classList.add("showCards");
             delButton.className = "delButton";
             delButton.addEventListener("click", async function () {
-                url = ModulpruefungGis.baseUrl + "/delete?_id=" + playingCarts[i].id;
+                console.log(playingCarts[i]._id);
+                let url = ModulpruefungGis.baseUrl + "/delete?_id=" + playingCarts[i]._id;
                 console.log("deleted");
                 await ModulpruefungGis.fetchData(url);
             });

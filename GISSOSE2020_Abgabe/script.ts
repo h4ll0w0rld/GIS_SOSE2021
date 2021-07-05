@@ -4,6 +4,9 @@ namespace ModulpruefungGis {
     let playingArea: HTMLDivElement = <HTMLDivElement>document.getElementById("PlayingBackground");
     let selectCards: HTMLDivElement = <HTMLDivElement>document.getElementById("selectCards");
 
+
+    export let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com";
+
     if (document.body.id == "playPage") {
         stardGame();
 
@@ -56,19 +59,20 @@ namespace ModulpruefungGis {
             image.classList.add("showCards");
 
             delButton.className = "delButton";
-           
+
             delButton.addEventListener("click", async function (): Promise<void> {
-                url = baseUrl + "/delete?_id=" + playingCarts[i].id;
+                console.log(playingCarts[i]._id);
+                let url: string = baseUrl + "/delete?_id=" + playingCarts[i]._id;
                 console.log("deleted");
                 await ModulpruefungGis.fetchData(url);
 
             });
 
             delButton.appendChild(document.createTextNode("Delete"));
-         
+
             selectCards.append(image);
             selectCards.appendChild(delButton);
-           
+
 
         }
     }
@@ -151,7 +155,7 @@ namespace ModulpruefungGis {
 
     }
     export interface CollectionData extends PlayingCard {
-        id: string;
+        _id: string;
 
 
     }

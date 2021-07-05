@@ -1,5 +1,5 @@
 namespace ModulpruefungGis {
-    export let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com"
+    let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com";
     let url: string = baseUrl;
 
 

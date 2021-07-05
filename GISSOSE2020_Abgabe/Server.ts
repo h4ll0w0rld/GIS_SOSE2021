@@ -49,6 +49,7 @@ export namespace ModulpruefungGis {
             _response.end();
 
         } else if (refUrl.pathname == "/delete") {
+            console.log("hey ich lösche");
             removeImage(url);
         }
 

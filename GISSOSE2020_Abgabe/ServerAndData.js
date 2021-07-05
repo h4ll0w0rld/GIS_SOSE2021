@@ -1,12 +1,12 @@
 "use strict";
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
-    ModulpruefungGis.baseUrl = "https://myfirsttestserverisnowlive.herokuapp.com";
-    let url = ModulpruefungGis.baseUrl;
+    let baseUrl = "https://myfirsttestserverisnowlive.herokuapp.com";
+    let url = baseUrl;
     if (document.body.id == "adminpage") {
         let saveNewImage = document.getElementById("insertButton");
         saveNewImage.addEventListener("click", function () {
-            url = ModulpruefungGis.baseUrl + "/save";
+            url = baseUrl + "/save";
             saveData();
         });
     }
@@ -19,7 +19,7 @@ var ModulpruefungGis;
     ModulpruefungGis.fetchData = fetchData;
     async function getData() {
         console.log("i am starting");
-        url = ModulpruefungGis.baseUrl + "/getData";
+        url = baseUrl + "/getData";
         return JSON.parse(await fetchData(url));
     }
     ModulpruefungGis.getData = getData;
@@ -32,7 +32,7 @@ var ModulpruefungGis;
         }
     }
     function deleteData(Card) {
-        url = ModulpruefungGis.baseUrl + "/delete";
+        url = baseUrl + "/delete";
         url += "?";
     }
     ModulpruefungGis.deleteData = deleteData;
