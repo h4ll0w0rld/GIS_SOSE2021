@@ -9,7 +9,7 @@
     },
     "devDependencies": {},
     "scripts": {
-        "start": "node GIS_SOSE2021/FinalServerTask/script.ts"
+        "start": "node GISSOSE2020_Abgabe/Server.js"
     },
     "repository": {
         "type": "git",
