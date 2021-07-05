@@ -36,7 +36,7 @@ var ModulpruefungGis;
             _response.write(JSON.stringify(await (playingCarts.find().toArray())));
             _response.end();
         }
-        else if (refUrl.pathname == "/save ") {
+        else if (refUrl.pathname == "/save") {
             writeToDatabase(url);
             _response.write("hey i am here");
             _response.end();

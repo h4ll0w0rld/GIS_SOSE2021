@@ -2,9 +2,7 @@
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let playingArea = document.getElementById("PlayingBackground");
-    if (document.body.id == "playingpage") {
-        showCards();
-    }
+    // showCards();
     async function showCards() {
         let playingCarts = await ModulpruefungGis.getData();
         let playingCardsCopy = playingCarts;
@@ -25,7 +23,7 @@ var ModulpruefungGis;
             playingSlot.append(image);
             final.splice(randomNumb, 1);
         }
-        return final;
+        return playingCarts;
     }
     let firstImgRes;
     let secondImgRes;

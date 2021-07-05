@@ -42,7 +42,7 @@ export namespace ModulpruefungGis {
 
             _response.end();
 
-        } else if (refUrl.pathname == "/save ") {
+        } else if (refUrl.pathname == "/save") {
 
             writeToDatabase(url);
             _response.write("hey i am here");

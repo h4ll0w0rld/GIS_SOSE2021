@@ -2,9 +2,8 @@
 
 namespace ModulpruefungGis {
     let playingArea: HTMLDivElement = <HTMLDivElement>document.getElementById("PlayingBackground");
-    if (document.body.id == "playingpage") {
-        showCards();
-    }
+
+   // showCards();
 
 
 
@@ -38,7 +37,7 @@ namespace ModulpruefungGis {
             final.splice(randomNumb, 1);
 
         }
-        return final;
+        return playingCarts;
 
     }
 
@@ -72,6 +71,8 @@ namespace ModulpruefungGis {
                     secondImgRes.remove();
                     firstImgRes = null;
                     secondImgRes = null;
+
+
                 }, 800);
 
 
@@ -99,7 +100,6 @@ namespace ModulpruefungGis {
 
 
         }
-
 
 
 
