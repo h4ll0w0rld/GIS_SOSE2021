@@ -4,7 +4,7 @@ namespace ModulpruefungGis {
 
     if (document.body.id == "adminpage") {
         let sendButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insertButton");
-        sendButton.addEventListener("click", sendData);
+        sendButton.addEventListener("click", saveData);
     }
 
 
@@ -26,10 +26,10 @@ namespace ModulpruefungGis {
 
 
 
-    async function sendData(): Promise<void> {
+    async function saveData(): Promise<void> {
         let userData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>userData);
-        url += "/send" + "?" + query.toString();
+        url += "/save" + "?" + query.toString();
         let response: Response = await fetch(url, { method: "get" });
         let responseText: string = await response.text();
 

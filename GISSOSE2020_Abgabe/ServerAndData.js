@@ -4,7 +4,7 @@ var ModulpruefungGis;
     let url = "https://myfirsttestserverisnowlive.herokuapp.com";
     if (document.body.id == "adminpage") {
         let sendButton = document.getElementById("insertButton");
-        sendButton.addEventListener("click", sendData);
+        sendButton.addEventListener("click", saveData);
     }
     async function getData() {
         console.log("i am starting");
@@ -16,10 +16,10 @@ var ModulpruefungGis;
         return responsePlayingCards;
     }
     ModulpruefungGis.getData = getData;
-    async function sendData() {
+    async function saveData() {
         let userData = new FormData(document.forms[0]);
         let query = new URLSearchParams(userData);
-        url += "/send" + "?" + query.toString();
+        url += "/save" + "?" + query.toString();
         let response = await fetch(url, { method: "get" });
         let responseText = await response.text();
     }
