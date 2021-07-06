@@ -48,8 +48,7 @@ export namespace ModulpruefungGis {
             _response.end();
 
         } else if (refUrl.pathname == "/save") {
-            await connectRoDatabase(dataBaseUrl, dataStringTime);       //TODO Change !!
-
+            await connectRoDatabase(dataBaseUrl, dataStringCards);     
 
             _response.write("hey i am here");
             playingCarts.insert(url.query);
