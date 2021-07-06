@@ -5,6 +5,7 @@ namespace ModulpruefungGis {
     let selectCards: HTMLDivElement = <HTMLDivElement>document.getElementById("selectCards");
 
 
+
     export let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com";
 
     if (document.body.id == "playPage") {
@@ -17,12 +18,13 @@ namespace ModulpruefungGis {
 
 
     async function stardGame(): Promise<PlayingCard[]> {
-        let playingCards: PlayingCard[] = await getPlayingCards();
+
+        let playingCards: PlayingCard[] = await ModulpruefungGis.getData();
         playingCards = playingCards.concat(playingCards);
-        // let playingCardsCopy: PlayingCard[] = playingCarts;
+
         let cardCover: PlayingCard = playingCards[0];
 
-        // let final: PlayingCard[] = playingCarts.concat(playingCardsCopy);
+
 
         for (let i: number = 0; i < playingCards.length; i + 1) {
             let playingSlot: HTMLDivElement = document.createElement("div");
@@ -52,7 +54,7 @@ namespace ModulpruefungGis {
 
 
     async function showCards(): Promise<void> {
-        let playingCarts: CollectionData[] = await getPlayingCards();
+        let playingCarts: CollectionData[] = await ModulpruefungGis.getData();
         for (let i: number = 0; i < playingCarts.length; i++) {
             let image: HTMLImageElement = document.createElement("img");
             let delButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
@@ -90,14 +92,14 @@ namespace ModulpruefungGis {
 
 
 
+
+
     async function cardClick(klick: MouseEvent): Promise<void> {
         if (firstTime) {
             timeNeeded();
             firstTime = false;
+
         }
-
-
-
 
 
 
@@ -116,10 +118,7 @@ namespace ModulpruefungGis {
 
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
 
-                let playingCards: CollectionData[] = await getPlayingCards();
-
-                console.log(attemts);
-
+                let playingCards: CollectionData[] = await ModulpruefungGis.getData();
 
 
                 setTimeout(() => {
@@ -135,12 +134,21 @@ namespace ModulpruefungGis {
 
 
                 }, 800);
+
+
                 if (attemts >= playingCards.length) {
-                    let time: number = timeNeeded();
+                    let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
+                    let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
+                    nameInputLabel.innerText = "Name"; //input für name Highscore 
+                    nameInput.appendChild(nameInputLabel);
+                    playingArea.append(nameInput);
+                    let time: number = Math.round(timeNeeded());
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log("current Time:" + timeNeeded().toString());
+                    console.log("BaseUrl: " + baseUrl);
+                    let url: string = baseUrl + "/saveTime/?time=" + time;
 
-                    fetchData(baseUrl + "/saveTime/?time=" + time);
+                    fetchData(url);
 
                     // window.location.href = "score.html";
 
@@ -166,18 +174,25 @@ namespace ModulpruefungGis {
         }
 
 
+
         function timeNeeded(): number {
+
             let timeFinal: number = -1;
+
+
             if (timeStart == -1) {
+
                 timeStart = performance.now();
 
             } else if (timeStart != -1 && timeEnd == -1) {
+
                 timeEnd = performance.now();
 
             }
 
 
             if (timeStart != -1 && timeEnd != -1) {
+
                 timeFinal = timeEnd - timeStart;
                 timeStart = -1;
                 timeEnd = -1;
@@ -193,15 +208,12 @@ namespace ModulpruefungGis {
 
 
     }
-    async function getPlayingCards(): Promise<CollectionData[]> {
-        let playingCards: CollectionData[];
-        if (playingCards == null) {
-            await ModulpruefungGis.getData();
-        }
-        return playingCards;
+
+
+    interface Highscore {
+        time: number;
+        name: string;
     }
-
-
 
 
 

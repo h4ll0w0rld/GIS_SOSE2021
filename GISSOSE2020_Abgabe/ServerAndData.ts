@@ -1,6 +1,7 @@
 namespace ModulpruefungGis {
     let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com";
     let url: string = baseUrl;
+    let dataBaseImg: CollectionData[];
 
 
     if (document.body.id == "adminpage") {
@@ -30,8 +31,12 @@ namespace ModulpruefungGis {
     export async function getData(): Promise<CollectionData[]> {
         console.log("i am starting");
         url = baseUrl + "/getData";
+        if (dataBaseImg == undefined) {
+            dataBaseImg = JSON.parse(await fetchData(url));
+            console.log("ACHTUNG");
+        }
 
-        return JSON.parse(await fetchData(url));
+        return dataBaseImg;
 
     }
 
@@ -57,10 +62,6 @@ namespace ModulpruefungGis {
         url += "?";
 
     }
-
-
-
-
 
 
 

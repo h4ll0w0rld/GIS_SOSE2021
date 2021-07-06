@@ -3,6 +3,7 @@ var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let baseUrl = "https://myfirsttestserverisnowlive.herokuapp.com";
     let url = baseUrl;
+    let dataBaseImg;
     if (document.body.id == "adminpage") {
         let saveNewImage = document.getElementById("insertButton");
         saveNewImage.addEventListener("click", function () {
@@ -20,7 +21,11 @@ var ModulpruefungGis;
     async function getData() {
         console.log("i am starting");
         url = baseUrl + "/getData";
-        return JSON.parse(await fetchData(url));
+        if (dataBaseImg == undefined) {
+            dataBaseImg = JSON.parse(await fetchData(url));
+            console.log("ACHTUNG");
+        }
+        return dataBaseImg;
     }
     ModulpruefungGis.getData = getData;
     async function saveData() {

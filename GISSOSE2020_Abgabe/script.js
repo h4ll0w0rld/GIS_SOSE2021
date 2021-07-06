@@ -11,11 +11,9 @@ var ModulpruefungGis;
         showCards();
     }
     async function stardGame() {
-        let playingCards = await getPlayingCards();
+        let playingCards = await ModulpruefungGis.getData();
         playingCards = playingCards.concat(playingCards);
-        // let playingCardsCopy: PlayingCard[] = playingCarts;
         let cardCover = playingCards[0];
-        // let final: PlayingCard[] = playingCarts.concat(playingCardsCopy);
         for (let i = 0; i < playingCards.length; i + 1) {
             let playingSlot = document.createElement("div");
             let image = document.createElement("img");
@@ -33,7 +31,7 @@ var ModulpruefungGis;
         return playingCards;
     }
     async function showCards() {
-        let playingCarts = await getPlayingCards();
+        let playingCarts = await ModulpruefungGis.getData();
         for (let i = 0; i < playingCarts.length; i++) {
             let image = document.createElement("img");
             let delButton = document.createElement("button");
@@ -72,8 +70,7 @@ var ModulpruefungGis;
             secondImgRes = klick.currentTarget;
             secondImgRes.src = secondImgRes.id;
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
-                let playingCards = await getPlayingCards();
-                console.log(attemts);
+                let playingCards = await ModulpruefungGis.getData();
                 setTimeout(() => {
                     firstImgRes.remove();
                     secondImgRes.remove();
@@ -82,10 +79,17 @@ var ModulpruefungGis;
                     attemts += 1;
                 }, 800);
                 if (attemts >= playingCards.length) {
-                    let time = timeNeeded();
+                    let nameInput = document.createElement("input");
+                    let nameInputLabel = document.createElement("label");
+                    nameInputLabel.innerText = "Name"; //input für name Highscore 
+                    nameInput.appendChild(nameInputLabel);
+                    playingArea.append(nameInput);
+                    let time = Math.round(timeNeeded());
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log("current Time:" + timeNeeded().toString());
-                    ModulpruefungGis.fetchData(ModulpruefungGis.baseUrl + "/saveTime/?time=" + time);
+                    console.log("BaseUrl: " + ModulpruefungGis.baseUrl);
+                    let url = ModulpruefungGis.baseUrl + "/saveTime/?time=" + time;
+                    ModulpruefungGis.fetchData(url);
                     // window.location.href = "score.html";
                 }
             }
@@ -116,13 +120,6 @@ var ModulpruefungGis;
             }
             return timeFinal;
         }
-    }
-    async function getPlayingCards() {
-        let playingCards;
-        if (playingCards == null) {
-            await ModulpruefungGis.getData();
-        }
-        return playingCards;
     }
 })(ModulpruefungGis || (ModulpruefungGis = {}));
 //# sourceMappingURL=script.js.map
