@@ -29,6 +29,7 @@ var ModulpruefungGis;
             playingArea.append(playingSlot);
             playingSlot.append(image);
             playingCards.splice(randomNumb, 1);
+            console.log(performance.now);
         }
         return playingCards;
     }
@@ -53,23 +54,38 @@ var ModulpruefungGis;
     let firstImgRes;
     let secondImgRes;
     let firstSrc;
+    let attemts = 1;
+    let timeStart = -1;
+    let timeEnd = -1;
+    let firstTime = true;
     async function cardClick(klick) {
+        if (firstTime) {
+            timeNeeded();
+        }
         if (firstImgRes == null) {
             firstImgRes = klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
-            firstImgRes.removeEventListener("click", cardClick);
+            //  firstImgRes.removeEventListener("click", cardClick);
         }
         else if (firstImgRes != null && secondImgRes == null) {
             secondImgRes = klick.currentTarget;
             secondImgRes.src = secondImgRes.id;
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
+                let playingCards = await ModulpruefungGis.getData();
+                console.log(attemts);
                 setTimeout(() => {
                     firstImgRes.remove();
                     secondImgRes.remove();
                     firstImgRes = null;
                     secondImgRes = null;
+                    attemts += 1;
                 }, 800);
+                if (attemts >= playingCards.length) {
+                    console.log("Aus Aus Das Spiel ist aus!");
+                    console.log(timeNeeded());
+                    // window.location.href = "score.html";
+                }
             }
             else if (firstImgRes != null && secondImgRes != null) {
                 setTimeout(() => {
@@ -81,6 +97,19 @@ var ModulpruefungGis;
                     console.log("alles weg :)");
                 }, 800);
             }
+        }
+        function timeNeeded() {
+            let timeFinal = -1;
+            if (timeStart == -1) {
+                timeStart = performance.now();
+            }
+            else if (timeStart != -1 && timeEnd == -1) {
+                timeEnd = performance.now();
+            }
+            if (timeStart != -1 && timeEnd != -1) {
+                timeFinal = timeEnd - timeStart;
+            }
+            return timeFinal;
         }
     }
 })(ModulpruefungGis || (ModulpruefungGis = {}));

@@ -12,7 +12,6 @@ var ModulpruefungGis;
     if (!port)
         port = 8122;
     startServer(port);
-    connectRoDatabase(dataBaseUrl);
     console.log("Port is: " + port);
     function startServer(_port) {
         console.log("Starting server changes");
@@ -25,6 +24,8 @@ var ModulpruefungGis;
         console.log("Listening");
     }
     async function handleRequest(_request, _response) {
+        let dataStringCards = "PlayingCarts";
+        let dataStringTime = "Time";
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8"); //Anfrage wird als HTML Text Element dargestellt
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -32,21 +33,27 @@ var ModulpruefungGis;
         var url = Url.parse(_request.url, true);
         console.log(url);
         if (refUrl.pathname == "/getData") {
+            connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("GIB MIR DATEN ! :D ");
             _response.write(JSON.stringify(await (playingCarts.find().toArray())));
             _response.end();
         }
         else if (refUrl.pathname == "/save") {
+            connectRoDatabase(dataBaseUrl, dataStringCards);
             _response.write("hey i am here");
             playingCarts.insert(url.query);
             _response.end();
         }
         else if (refUrl.pathname == "/delete") {
+            connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
         }
+        else if (refUrl.pathname == "saveTime") {
+            connectRoDatabase(dataBaseUrl, dataStringTime);
+        }
     }
-    async function connectRoDatabase(_url) {
+    async function connectRoDatabase(_url, database) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();

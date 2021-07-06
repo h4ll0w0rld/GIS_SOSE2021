@@ -11,7 +11,7 @@ export namespace ModulpruefungGis {
         port = 8122;
 
     startServer(port);
-    connectRoDatabase(dataBaseUrl);
+
     console.log("Port is: " + port);
 
     function startServer(_port: number | string): void {
@@ -28,6 +28,8 @@ export namespace ModulpruefungGis {
 
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {          //Anfragen werden hier "gefagen"
+        let dataStringCards = "PlayingCarts";
+        let dataStringTime = "Time";
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");                //Anfrage wird als HTML Text Element dargestellt
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -37,21 +39,29 @@ export namespace ModulpruefungGis {
 
 
         if (refUrl.pathname == "/getData") {
+
+            connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("GIB MIR DATEN ! :D ");
             _response.write(JSON.stringify(await (playingCarts.find().toArray())));
 
             _response.end();
 
         } else if (refUrl.pathname == "/save") {
-            
+            connectRoDatabase(dataBaseUrl, dataStringCards);
+
 
             _response.write("hey i am here");
             playingCarts.insert(url.query);
             _response.end();
 
         } else if (refUrl.pathname == "/delete") {
+            connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("hey ich lösche");
-            playingCarts.deleteOne({_id: new Mongo.ObjectId(refUrl.searchParams.get("_id"))});
+            playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
+
+        } else if (refUrl.pathname == "saveTime") {
+            connectRoDatabase(dataBaseUrl, dataStringTime);
+
         }
 
     }
@@ -59,7 +69,7 @@ export namespace ModulpruefungGis {
 
 
 
-    async function connectRoDatabase(_url: string): Promise<void> {
+    async function connectRoDatabase(_url: string, database: string): Promise<void> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
@@ -71,5 +81,5 @@ export namespace ModulpruefungGis {
 
 
 
-  
+
 }
