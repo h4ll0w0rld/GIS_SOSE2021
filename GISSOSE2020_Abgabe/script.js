@@ -11,7 +11,7 @@ var ModulpruefungGis;
         showCards();
     }
     async function stardGame() {
-        let playingCards = await ModulpruefungGis.getData();
+        let playingCards = await getPlayingCards();
         playingCards = playingCards.concat(playingCards);
         // let playingCardsCopy: PlayingCard[] = playingCarts;
         let cardCover = playingCards[0];
@@ -33,7 +33,7 @@ var ModulpruefungGis;
         return playingCards;
     }
     async function showCards() {
-        let playingCarts = await ModulpruefungGis.getData();
+        let playingCarts = await getPlayingCards();
         for (let i = 0; i < playingCarts.length; i++) {
             let image = document.createElement("img");
             let delButton = document.createElement("button");
@@ -60,6 +60,7 @@ var ModulpruefungGis;
     async function cardClick(klick) {
         if (firstTime) {
             timeNeeded();
+            firstTime = false;
         }
         if (firstImgRes == null) {
             firstImgRes = klick.currentTarget;
@@ -71,7 +72,7 @@ var ModulpruefungGis;
             secondImgRes = klick.currentTarget;
             secondImgRes.src = secondImgRes.id;
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
-                let playingCards = await ModulpruefungGis.getData();
+                let playingCards = await getPlayingCards();
                 console.log(attemts);
                 setTimeout(() => {
                     firstImgRes.remove();
@@ -81,9 +82,10 @@ var ModulpruefungGis;
                     attemts += 1;
                 }, 800);
                 if (attemts >= playingCards.length) {
+                    let time = timeNeeded();
                     console.log("Aus Aus Das Spiel ist aus!");
-                    console.log(timeNeeded());
-                    ModulpruefungGis.fetchData(ModulpruefungGis.baseUrl + "/saveTime?time=" + timeNeeded());
+                    console.log("current Time:" + timeNeeded().toString());
+                    ModulpruefungGis.fetchData(ModulpruefungGis.baseUrl + "/saveTime/?time=" + time);
                     // window.location.href = "score.html";
                 }
             }
@@ -108,9 +110,19 @@ var ModulpruefungGis;
             }
             if (timeStart != -1 && timeEnd != -1) {
                 timeFinal = timeEnd - timeStart;
+                timeStart = -1;
+                timeEnd = -1;
+                console.log("ich errechne" + timeFinal);
             }
             return timeFinal;
         }
+    }
+    async function getPlayingCards() {
+        let playingCards;
+        if (playingCards == null) {
+            await ModulpruefungGis.getData();
+        }
+        return playingCards;
     }
 })(ModulpruefungGis || (ModulpruefungGis = {}));
 //# sourceMappingURL=script.js.map

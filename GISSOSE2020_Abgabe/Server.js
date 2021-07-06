@@ -51,8 +51,9 @@ var ModulpruefungGis;
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
         }
         else if (refUrl.pathname == "/saveTime") {
+            console.log("connected to DataBase savetime");
             await connectRoDatabase(dataBaseUrl, dataStringTime);
-            console.log(url.query);
+            console.log("heyho" + url.query);
             await bestTime.insert(url.query);
             _response.end();
         }
@@ -64,5 +65,6 @@ var ModulpruefungGis;
         playingCarts = mongoClient.db("Test").collection(database);
         console.log("Database is connected", playingCarts != undefined);
     }
+    //help
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));
 //# sourceMappingURL=Server.js.map

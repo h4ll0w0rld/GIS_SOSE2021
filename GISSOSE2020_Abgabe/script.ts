@@ -17,7 +17,7 @@ namespace ModulpruefungGis {
 
 
     async function stardGame(): Promise<PlayingCard[]> {
-        let playingCards: PlayingCard[] = await ModulpruefungGis.getData();
+        let playingCards: PlayingCard[] = await getPlayingCards();
         playingCards = playingCards.concat(playingCards);
         // let playingCardsCopy: PlayingCard[] = playingCarts;
         let cardCover: PlayingCard = playingCards[0];
@@ -52,7 +52,7 @@ namespace ModulpruefungGis {
 
 
     async function showCards(): Promise<void> {
-        let playingCarts: CollectionData[] = await ModulpruefungGis.getData();
+        let playingCarts: CollectionData[] = await getPlayingCards();
         for (let i: number = 0; i < playingCarts.length; i++) {
             let image: HTMLImageElement = document.createElement("img");
             let delButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
@@ -93,6 +93,7 @@ namespace ModulpruefungGis {
     async function cardClick(klick: MouseEvent): Promise<void> {
         if (firstTime) {
             timeNeeded();
+            firstTime = false;
         }
 
 
@@ -115,7 +116,7 @@ namespace ModulpruefungGis {
 
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
 
-                let playingCards: CollectionData[] = await ModulpruefungGis.getData();
+                let playingCards: CollectionData[] = await getPlayingCards();
 
                 console.log(attemts);
 
@@ -135,9 +136,11 @@ namespace ModulpruefungGis {
 
                 }, 800);
                 if (attemts >= playingCards.length) {
+                    let time: number = timeNeeded();
                     console.log("Aus Aus Das Spiel ist aus!");
-                    console.log(timeNeeded());
-                    fetchData(baseUrl + "/saveTime?time=" + timeNeeded());
+                    console.log("current Time:" + timeNeeded().toString());
+
+                    fetchData(baseUrl + "/saveTime/?time=" + time);
 
                     // window.location.href = "score.html";
 
@@ -176,6 +179,9 @@ namespace ModulpruefungGis {
 
             if (timeStart != -1 && timeEnd != -1) {
                 timeFinal = timeEnd - timeStart;
+                timeStart = -1;
+                timeEnd = -1;
+                console.log("ich errechne" + timeFinal);
 
             }
             return timeFinal;
@@ -186,6 +192,13 @@ namespace ModulpruefungGis {
 
 
 
+    }
+    async function getPlayingCards(): Promise<CollectionData[]> {
+        let playingCards: CollectionData[];
+        if (playingCards == null) {
+            await ModulpruefungGis.getData();
+        }
+        return playingCards;
     }
 
 
