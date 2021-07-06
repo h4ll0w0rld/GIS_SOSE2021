@@ -48,7 +48,7 @@ export namespace ModulpruefungGis {
             _response.end();
 
         } else if (refUrl.pathname == "/save") {
-            await connectRoDatabase(dataBaseUrl, dataStringCards);     
+            await connectRoDatabase(dataBaseUrl, dataStringCards);
 
             _response.write("hey i am here");
             playingCarts.insert(url.query);
@@ -60,11 +60,11 @@ export namespace ModulpruefungGis {
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
 
         } else if (refUrl.pathname == "/saveTime") {
-            
+
             await connectRoDatabase(dataBaseUrl, dataStringTime);
             console.log("connected to DataBase savetime");
             console.log(url.query);
-            bestTime.insert(url.query);
+            playingCarts.insert(url.query);
             _response.end();
 
         }
