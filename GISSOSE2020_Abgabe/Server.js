@@ -54,7 +54,7 @@ var ModulpruefungGis;
             await connectRoDatabase(dataBaseUrl, dataStringTime);
             console.log("connected to DataBase savetime");
             console.log(url.query);
-            playingCarts.insert(url.query);
+            playingCarts.insertOne(url.query);
             _response.end();
         }
     }
