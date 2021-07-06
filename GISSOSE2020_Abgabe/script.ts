@@ -43,7 +43,7 @@ namespace ModulpruefungGis {
 
 
             playingCards.splice(randomNumb, 1);
-            console.log(performance.now);
+
 
         }
         return playingCards;
@@ -114,7 +114,7 @@ namespace ModulpruefungGis {
 
 
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
-               
+
                 let playingCards: CollectionData[] = await ModulpruefungGis.getData();
 
                 console.log(attemts);
@@ -137,6 +137,7 @@ namespace ModulpruefungGis {
                 if (attemts >= playingCards.length) {
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log(timeNeeded());
+                    fetchData(baseUrl + "/saveTime?time=" + timeNeeded());
 
                     // window.location.href = "score.html";
 

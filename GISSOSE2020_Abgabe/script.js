@@ -29,7 +29,6 @@ var ModulpruefungGis;
             playingArea.append(playingSlot);
             playingSlot.append(image);
             playingCards.splice(randomNumb, 1);
-            console.log(performance.now);
         }
         return playingCards;
     }
@@ -84,6 +83,7 @@ var ModulpruefungGis;
                 if (attemts >= playingCards.length) {
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log(timeNeeded());
+                    ModulpruefungGis.fetchData(ModulpruefungGis.baseUrl + "/saveTime?time=" + timeNeeded());
                     // window.location.href = "score.html";
                 }
             }

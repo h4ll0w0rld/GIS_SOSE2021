@@ -4,6 +4,7 @@ import * as Mongo from "mongodb";
 
 export namespace ModulpruefungGis {
     let playingCarts: Mongo.Collection;
+    let bestTime: Mongo.Collection;
     let dataBaseUrl: string = "mongodb+srv://admin:hallodasistmeincluster@cluster0.0enhn.mongodb.net/Test?retryWrites=true&w=majority";
 
     let port: number = Number(process.env.PORT);
@@ -59,8 +60,10 @@ export namespace ModulpruefungGis {
             console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
 
-        } else if (refUrl.pathname == "saveTime") {
+        } else if (refUrl.pathname == "/saveTime") {
             connectRoDatabase(dataBaseUrl, dataStringTime);
+            bestTime.insert(url.query);
+            _response.end();
 
         }
 

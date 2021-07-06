@@ -7,6 +7,7 @@ const Mongo = require("mongodb");
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let playingCarts;
+    let bestTime;
     let dataBaseUrl = "mongodb+srv://admin:hallodasistmeincluster@cluster0.0enhn.mongodb.net/Test?retryWrites=true&w=majority";
     let port = Number(process.env.PORT);
     if (!port)
@@ -49,8 +50,10 @@ var ModulpruefungGis;
             console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
         }
-        else if (refUrl.pathname == "saveTime") {
+        else if (refUrl.pathname == "/saveTime") {
             connectRoDatabase(dataBaseUrl, dataStringTime);
+            bestTime.insert(url.query);
+            _response.end();
         }
     }
     async function connectRoDatabase(_url, database) {
