@@ -40,7 +40,7 @@ var ModulpruefungGis;
             _response.end();
         }
         else if (refUrl.pathname == "/save") {
-            await connectRoDatabase(dataBaseUrl, dataStringCards);
+            await connectRoDatabase(dataBaseUrl, dataStringTime); //TODO Change !!
             _response.write("hey i am here");
             playingCarts.insert(url.query);
             _response.end();
@@ -66,6 +66,5 @@ var ModulpruefungGis;
         console.log("Database is connected", playingCarts != undefined);
         console.log(database);
     }
-    //help
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));
 //# sourceMappingURL=Server.js.map

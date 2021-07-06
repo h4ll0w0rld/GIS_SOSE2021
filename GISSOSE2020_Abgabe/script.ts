@@ -149,21 +149,21 @@ namespace ModulpruefungGis {
 
 
                 if (attemts >= playingCards.length) {
-                    let formData: HTMLFormElement = <HTMLFormElement>document.createElement("form");
+                    // let formData: HTMLFormElement = <HTMLFormElement>document.createElement("form");
                     let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
                     let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
                     let submittButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
                     let highscoreplayer: Highscore;
                     nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
                     nameInput.id = "enterName";          //input für name Highscore 
-                    
-
-                    document.body.append(formData);
-                    formData.appendChild(nameInputLabel);
-                    formData.appendChild(nameInput);
 
 
-                    formData.appendChild(submittButton);
+                    document.body.append(nameInputLabel);
+                    nameInputLabel.appendChild(nameInput);
+
+
+
+                    nameInputLabel.appendChild(submittButton);
 
 
                     console.log("Aus Aus Das Spiel ist aus!");
@@ -172,16 +172,16 @@ namespace ModulpruefungGis {
                     submittButton.addEventListener("click", function (): void {
                         console.log("Submitt");
                         console.log(timeNeeded().toString());
-                        highscoreplayer.name = nameInput.value;
+                      //  highscoreplayer.name = nameInput.value;
 
                         //highscoreplayer.time = timeNeeded();
 
                         let userData: URLSearchParams = new URLSearchParams();
-                      //  userData.append(time:timeNeeded(), name:nameInput);
+                        //  userData.append(time:timeNeeded(), name:nameInput);
 
                         console.log(userData);
-                        // let url: string = baseUrl + "/saveTime?time=" + timeNeeded();
-                        // fetchData(url);
+                        let url: string = baseUrl + "/saveTime?time=" + timeNeeded();
+                        fetchData(url);
                     });
 
 
@@ -209,7 +209,7 @@ namespace ModulpruefungGis {
 
             }
         }
-       
+
 
 
 
