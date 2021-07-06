@@ -41,14 +41,14 @@ export namespace ModulpruefungGis {
 
         if (refUrl.pathname == "/getData") {
 
-            connectRoDatabase(dataBaseUrl, dataStringCards);
+            await connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("GIB MIR DATEN ! :D ");
             _response.write(JSON.stringify(await (playingCarts.find().toArray())));
 
             _response.end();
 
         } else if (refUrl.pathname == "/save") {
-            connectRoDatabase(dataBaseUrl, dataStringCards);
+            await connectRoDatabase(dataBaseUrl, dataStringCards);
 
 
             _response.write("hey i am here");
@@ -61,8 +61,8 @@ export namespace ModulpruefungGis {
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
 
         } else if (refUrl.pathname == "/saveTime") {
-            connectRoDatabase(dataBaseUrl, dataStringTime);
-            bestTime.insert(url.query);
+            await connectRoDatabase(dataBaseUrl, dataStringTime);
+            await bestTime.insert(url.query);
             _response.end();
 
         }
