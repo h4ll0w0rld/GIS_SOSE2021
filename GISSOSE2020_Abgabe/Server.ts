@@ -60,7 +60,7 @@ export namespace ModulpruefungGis {
             console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
 
-        } else if (refUrl.pathname == "/saveTime/") {
+        } else if (refUrl.pathname == "/saveTime") {
             
             await connectRoDatabase(dataBaseUrl, dataStringTime);
             console.log("connected to DataBase savetime");

@@ -146,7 +146,7 @@ namespace ModulpruefungGis {
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log("current Time:" + timeNeeded().toString());
                     console.log("BaseUrl: " + baseUrl);
-                    let url: string = baseUrl + "/saveTime/?time=" + time;
+                    let url: string = baseUrl + "/saveTime?time=" + time;
 
                     fetchData(url);
 

@@ -88,7 +88,7 @@ var ModulpruefungGis;
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log("current Time:" + timeNeeded().toString());
                     console.log("BaseUrl: " + ModulpruefungGis.baseUrl);
-                    let url = ModulpruefungGis.baseUrl + "/saveTime/?time=" + time;
+                    let url = ModulpruefungGis.baseUrl + "/saveTime?time=" + time;
                     ModulpruefungGis.fetchData(url);
                     // window.location.href = "score.html";
                 }
