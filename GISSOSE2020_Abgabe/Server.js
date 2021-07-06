@@ -53,8 +53,8 @@ var ModulpruefungGis;
         else if (refUrl.pathname == "/saveTime") {
             await connectRoDatabase(dataBaseUrl, dataStringTime);
             console.log("connected to DataBase savetime");
-            console.log("heyho" + url.query);
-            await bestTime.insert(url.query);
+            console.log(url);
+            bestTime.insert(url.query);
             _response.end();
         }
     }

@@ -149,39 +149,60 @@ namespace ModulpruefungGis {
 
 
                 if (attemts >= playingCards.length) {
-                    // let formData: HTMLFormElement = <HTMLFormElement>document.createElement("form");
+                    let formData: HTMLFormElement = <HTMLFormElement>document.createElement("form");
                     let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
                     let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
                     let submittButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
-                    let highscoreplayer: Highscore;
+
                     nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
-                    nameInput.id = "enterName";          //input für name Highscore 
+                    nameInput.name = "name";
+                    //input für name Highscore 
+                    formData.onsubmit = (e) => {
+                        console.log(document.forms[0]);
 
+                        return false;
 
-                    document.body.append(nameInputLabel);
-                    nameInputLabel.appendChild(nameInput);
+                    };
 
+                    document.body.append(formData);
+                    formData.appendChild(nameInput);
+                    formData.appendChild(nameInputLabel);
 
+                    console.log(timeNeeded.toString);
 
-                    nameInputLabel.appendChild(submittButton);
+                    formData.appendChild(submittButton);
 
 
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log("BaseUrl: " + baseUrl);
 
-                    submittButton.addEventListener("click", function (): void {
+                    submittButton.addEventListener("click", async function (): Promise<void> {
+                        let highscoreplayer: Highscore;
+                        console.log(nameInput.value);
+
+                        // highscoreplayer.name = nameInput.value;
+                        // highscoreplayer.time = timeNeeded();
+
+
+
                         console.log("Submitt");
-                        console.log(timeNeeded().toString());
-                      //  highscoreplayer.name = nameInput.value;
+
+                        //  highscoreplayer.name = nameInput.value;
 
                         //highscoreplayer.time = timeNeeded();
 
-                        let userData: URLSearchParams = new URLSearchParams();
                         //  userData.append(time:timeNeeded(), name:nameInput);
 
-                        console.log(userData);
-                        let url: string = baseUrl + "/saveTime?time=" + timeNeeded();
-                        fetchData(url);
+                        let timeString: string = String(timeNeeded());
+                        console.log("TimeString" + timeString);
+                        let formDatas: FormData = new FormData(document.forms[0]);
+
+                        let query: URLSearchParams = new URLSearchParams({ time: timeString, name: nameInput.value });
+
+                        let url: string = baseUrl + "/saveTime" + "?time=" + timeString + "&name=" + nameInput.value;
+                       
+                        await fetchData(url);
+
                     });
 
 
@@ -246,6 +267,7 @@ namespace ModulpruefungGis {
 
 
     }
+
 
 
     interface Highscore {

@@ -87,28 +87,39 @@ var ModulpruefungGis;
                     attemts += 1;
                 }, 800);
                 if (attemts >= playingCards.length) {
-                    // let formData: HTMLFormElement = <HTMLFormElement>document.createElement("form");
+                    let formData = document.createElement("form");
                     let nameInput = document.createElement("input");
                     let nameInputLabel = document.createElement("label");
                     let submittButton = document.createElement("button");
-                    let highscoreplayer;
                     nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
-                    nameInput.id = "enterName"; //input für name Highscore 
-                    document.body.append(nameInputLabel);
-                    nameInputLabel.appendChild(nameInput);
-                    nameInputLabel.appendChild(submittButton);
+                    nameInput.name = "name";
+                    //input für name Highscore 
+                    formData.onsubmit = (e) => {
+                        console.log(document.forms[0]);
+                        return false;
+                    };
+                    document.body.append(formData);
+                    formData.appendChild(nameInput);
+                    formData.appendChild(nameInputLabel);
+                    console.log(timeNeeded.toString);
+                    formData.appendChild(submittButton);
                     console.log("Aus Aus Das Spiel ist aus!");
                     console.log("BaseUrl: " + ModulpruefungGis.baseUrl);
-                    submittButton.addEventListener("click", function () {
+                    submittButton.addEventListener("click", async function () {
+                        let highscoreplayer;
+                        console.log(nameInput.value);
+                        // highscoreplayer.name = nameInput.value;
+                        // highscoreplayer.time = timeNeeded();
                         console.log("Submitt");
-                        console.log(timeNeeded().toString());
                         //  highscoreplayer.name = nameInput.value;
                         //highscoreplayer.time = timeNeeded();
-                        let userData = new URLSearchParams();
                         //  userData.append(time:timeNeeded(), name:nameInput);
-                        console.log(userData);
-                        let url = ModulpruefungGis.baseUrl + "/saveTime?time=" + timeNeeded();
-                        ModulpruefungGis.fetchData(url);
+                        let timeString = String(timeNeeded());
+                        console.log("TimeString" + timeString);
+                        let formDatas = new FormData(document.forms[0]);
+                        let query = new URLSearchParams({ time: timeString, name: nameInput.value });
+                        let url = ModulpruefungGis.baseUrl + "/saveTime" + "?time=" + timeString + "&name=" + nameInput.value;
+                        await ModulpruefungGis.fetchData(url);
                     });
                     // window.location.href = "score.html";
                 }
