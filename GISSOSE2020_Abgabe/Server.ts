@@ -82,6 +82,7 @@ export namespace ModulpruefungGis {
 
         playingCarts = mongoClient.db("Test").collection(database);
         console.log("Database is connected", playingCarts != undefined);
+        console.log(database);
 
     }
 

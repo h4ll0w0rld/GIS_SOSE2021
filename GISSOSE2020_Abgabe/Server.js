@@ -64,6 +64,7 @@ var ModulpruefungGis;
         await mongoClient.connect();
         playingCarts = mongoClient.db("Test").collection(database);
         console.log("Database is connected", playingCarts != undefined);
+        console.log(database);
     }
     //help
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));

@@ -60,6 +60,14 @@ var ModulpruefungGis;
             timeNeeded();
             firstTime = false;
         }
+        // let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
+        // let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
+        // let submittButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
+        // nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
+        // nameInput.id = "enterName";          //input für name Highscore 
+        // document.body.append(nameInputLabel);
+        // nameInputLabel.appendChild(nameInput);
+        // nameInputLabel.appendChild(submittButton);
         if (firstImgRes == null) {
             firstImgRes = klick.currentTarget;
             firstSrc = firstImgRes.src;
@@ -79,17 +87,30 @@ var ModulpruefungGis;
                     attemts += 1;
                 }, 800);
                 if (attemts >= playingCards.length) {
+                    let formData = document.createElement("form");
                     let nameInput = document.createElement("input");
                     let nameInputLabel = document.createElement("label");
-                    nameInputLabel.innerText = "Name"; //input für name Highscore 
-                    nameInput.appendChild(nameInputLabel);
-                    playingArea.append(nameInput);
-                    let time = Math.round(timeNeeded());
+                    let submittButton = document.createElement("button");
+                    let highscoreplayer;
+                    nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
+                    nameInput.id = "enterName"; //input für name Highscore 
+                    document.body.append(formData);
+                    formData.appendChild(nameInputLabel);
+                    formData.appendChild(nameInput);
+                    formData.appendChild(submittButton);
                     console.log("Aus Aus Das Spiel ist aus!");
-                    console.log("current Time:" + timeNeeded().toString());
                     console.log("BaseUrl: " + ModulpruefungGis.baseUrl);
-                    let url = ModulpruefungGis.baseUrl + "/saveTime?time=" + time;
-                    ModulpruefungGis.fetchData(url);
+                    submittButton.addEventListener("click", function () {
+                        console.log("Submitt");
+                        console.log(timeNeeded().toString());
+                        highscoreplayer.name = nameInput.value;
+                        //highscoreplayer.time = timeNeeded();
+                        let userData = new URLSearchParams();
+                        //  userData.append(time:timeNeeded(), name:nameInput);
+                        console.log(userData);
+                        // let url: string = baseUrl + "/saveTime?time=" + timeNeeded();
+                        // fetchData(url);
+                    });
                     // window.location.href = "score.html";
                 }
             }

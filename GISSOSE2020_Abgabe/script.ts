@@ -100,6 +100,18 @@ namespace ModulpruefungGis {
             firstTime = false;
 
         }
+        // let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
+        // let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
+        // let submittButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
+        // nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
+        // nameInput.id = "enterName";          //input für name Highscore 
+
+
+        // document.body.append(nameInputLabel);
+        // nameInputLabel.appendChild(nameInput);
+
+
+        // nameInputLabel.appendChild(submittButton);
 
 
 
@@ -137,18 +149,43 @@ namespace ModulpruefungGis {
 
 
                 if (attemts >= playingCards.length) {
+                    let formData: HTMLFormElement = <HTMLFormElement>document.createElement("form");
                     let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
                     let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
-                    nameInputLabel.innerText = "Name"; //input für name Highscore 
-                    nameInput.appendChild(nameInputLabel);
-                    playingArea.append(nameInput);
-                    let time: number = Math.round(timeNeeded());
-                    console.log("Aus Aus Das Spiel ist aus!");
-                    console.log("current Time:" + timeNeeded().toString());
-                    console.log("BaseUrl: " + baseUrl);
-                    let url: string = baseUrl + "/saveTime?time=" + time;
+                    let submittButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
+                    let highscoreplayer: Highscore;
+                    nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
+                    nameInput.id = "enterName";          //input für name Highscore 
+                    
 
-                    fetchData(url);
+                    document.body.append(formData);
+                    formData.appendChild(nameInputLabel);
+                    formData.appendChild(nameInput);
+
+
+                    formData.appendChild(submittButton);
+
+
+                    console.log("Aus Aus Das Spiel ist aus!");
+                    console.log("BaseUrl: " + baseUrl);
+
+                    submittButton.addEventListener("click", function (): void {
+                        console.log("Submitt");
+                        console.log(timeNeeded().toString());
+                        highscoreplayer.name = nameInput.value;
+
+                        //highscoreplayer.time = timeNeeded();
+
+                        let userData: URLSearchParams = new URLSearchParams();
+                      //  userData.append(time:timeNeeded(), name:nameInput);
+
+                        console.log(userData);
+                        // let url: string = baseUrl + "/saveTime?time=" + timeNeeded();
+                        // fetchData(url);
+                    });
+
+
+
 
                     // window.location.href = "score.html";
 
@@ -172,6 +209,7 @@ namespace ModulpruefungGis {
 
             }
         }
+       
 
 
 
