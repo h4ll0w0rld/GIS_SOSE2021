@@ -46,12 +46,13 @@ var ModulpruefungGis;
             _response.end();
         }
         else if (refUrl.pathname == "/delete") {
-            connectRoDatabase(dataBaseUrl, dataStringCards);
+            await connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
         }
         else if (refUrl.pathname == "/saveTime") {
             await connectRoDatabase(dataBaseUrl, dataStringTime);
+            console.log(url.query);
             await bestTime.insert(url.query);
             _response.end();
         }
@@ -60,7 +61,7 @@ var ModulpruefungGis;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        playingCarts = mongoClient.db("Test").collection("PlayingCarts");
+        playingCarts = mongoClient.db("Test").collection(database);
         console.log("Database is connected", playingCarts != undefined);
     }
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));

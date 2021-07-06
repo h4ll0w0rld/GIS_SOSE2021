@@ -29,8 +29,8 @@ export namespace ModulpruefungGis {
 
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {          //Anfragen werden hier "gefagen"
-        let dataStringCards = "PlayingCarts";
-        let dataStringTime = "Time";
+        let dataStringCards: string = "PlayingCarts";
+        let dataStringTime: string = "Time";
         console.log("I hear voices!");
         _response.setHeader("content-type", "text/html; charset=utf-8");                //Anfrage wird als HTML Text Element dargestellt
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -56,12 +56,13 @@ export namespace ModulpruefungGis {
             _response.end();
 
         } else if (refUrl.pathname == "/delete") {
-            connectRoDatabase(dataBaseUrl, dataStringCards);
+            await connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
 
         } else if (refUrl.pathname == "/saveTime") {
             await connectRoDatabase(dataBaseUrl, dataStringTime);
+            console.log(url.query);
             await bestTime.insert(url.query);
             _response.end();
 
@@ -77,7 +78,7 @@ export namespace ModulpruefungGis {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
 
-        playingCarts = mongoClient.db("Test").collection("PlayingCarts");
+        playingCarts = mongoClient.db("Test").collection(database);
         console.log("Database is connected", playingCarts != undefined);
 
     }
