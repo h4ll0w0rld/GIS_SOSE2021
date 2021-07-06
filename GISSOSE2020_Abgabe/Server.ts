@@ -4,7 +4,7 @@ import * as Mongo from "mongodb";
 
 export namespace ModulpruefungGis {
     let playingCarts: Mongo.Collection;
-    let bestTime: Mongo.Collection;
+
     let dataBaseUrl: string = "mongodb+srv://admin:hallodasistmeincluster@cluster0.0enhn.mongodb.net/Test?retryWrites=true&w=majority";
 
     let port: number = Number(process.env.PORT);
@@ -66,6 +66,16 @@ export namespace ModulpruefungGis {
             console.log(url.query);
             playingCarts.insertOne(url.query);
             _response.end();
+
+        } else if (refUrl.pathname == "/getHighscore") {
+
+            await connectRoDatabase(dataBaseUrl, dataStringTime);
+
+            _response.write(JSON.stringify(await (playingCarts.find().toArray())));
+
+            _response.end();
+
+
 
         }
 

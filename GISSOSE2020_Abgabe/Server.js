@@ -7,7 +7,6 @@ const Mongo = require("mongodb");
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
     let playingCarts;
-    let bestTime;
     let dataBaseUrl = "mongodb+srv://admin:hallodasistmeincluster@cluster0.0enhn.mongodb.net/Test?retryWrites=true&w=majority";
     let port = Number(process.env.PORT);
     if (!port)
@@ -55,6 +54,11 @@ var ModulpruefungGis;
             console.log("connected to DataBase savetime");
             console.log(url.query);
             playingCarts.insertOne(url.query);
+            _response.end();
+        }
+        else if (refUrl.pathname == "/getHighscore") {
+            await connectRoDatabase(dataBaseUrl, dataStringTime);
+            _response.write(JSON.stringify(await (playingCarts.find().toArray())));
             _response.end();
         }
     }

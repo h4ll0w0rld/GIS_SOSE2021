@@ -4,6 +4,7 @@ var ModulpruefungGis;
     let baseUrl = "https://myfirsttestserverisnowlive.herokuapp.com";
     let url = baseUrl;
     let dataBaseImg;
+    let highscoreArray;
     if (document.body.id == "adminpage") {
         let saveNewImage = document.getElementById("insertButton");
         saveNewImage.addEventListener("click", function () {
@@ -28,6 +29,16 @@ var ModulpruefungGis;
         return dataBaseImg;
     }
     ModulpruefungGis.getData = getData;
+    async function getHighscore() {
+        console.log("i am starting");
+        url = baseUrl + "/getHighscore";
+        if (highscoreArray == undefined) {
+            highscoreArray = JSON.parse(await fetchData(url));
+            console.log("ACHTUNG !!");
+        }
+        return highscoreArray;
+    }
+    ModulpruefungGis.getHighscore = getHighscore;
     async function saveData() {
         if (document.body.id == "adminpage") {
             let userData = new FormData(document.forms[0]);

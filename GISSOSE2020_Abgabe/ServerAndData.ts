@@ -2,6 +2,7 @@ namespace ModulpruefungGis {
     let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com";
     let url: string = baseUrl;
     let dataBaseImg: CollectionData[];
+    let highscoreArray: Highscore[];
 
 
     if (document.body.id == "adminpage") {
@@ -37,6 +38,18 @@ namespace ModulpruefungGis {
         }
 
         return dataBaseImg;
+
+    }
+    
+    export async function getHighscore(): Promise<Highscore[]> {
+        console.log("i am starting");
+        url = baseUrl + "/getHighscore";
+        if (highscoreArray == undefined) {
+            highscoreArray = JSON.parse(await fetchData(url));
+            console.log("ACHTUNG !!");
+        }
+
+        return highscoreArray;
 
     }
 

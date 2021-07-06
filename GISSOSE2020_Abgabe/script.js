@@ -10,6 +10,9 @@ var ModulpruefungGis;
     else if (document.body.id == "adminpage") {
         showCards();
     }
+    else if (document.body.id == "score") {
+        showHighscore();
+    }
     async function stardGame() {
         let playingCards = await ModulpruefungGis.getData();
         playingCards = playingCards.concat(playingCards);
@@ -60,19 +63,11 @@ var ModulpruefungGis;
             timeNeeded();
             firstTime = false;
         }
-        // let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
-        // let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
-        // let submittButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
-        // nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
-        // nameInput.id = "enterName";          //input für name Highscore 
-        // document.body.append(nameInputLabel);
-        // nameInputLabel.appendChild(nameInput);
-        // nameInputLabel.appendChild(submittButton);
         if (firstImgRes == null) {
             firstImgRes = klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
-            //  firstImgRes.removeEventListener("click", cardClick);
+            firstImgRes.removeEventListener("click", cardClick);
         }
         else if (firstImgRes != null && secondImgRes == null) {
             secondImgRes = klick.currentTarget;
@@ -93,35 +88,21 @@ var ModulpruefungGis;
                     let submittButton = document.createElement("button");
                     nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
                     nameInput.name = "name";
-                    //input für name Highscore 
-                    formData.onsubmit = (e) => {
-                        console.log(document.forms[0]);
-                        return false;
-                    };
                     document.body.append(formData);
                     formData.appendChild(nameInput);
                     formData.appendChild(nameInputLabel);
-                    console.log(timeNeeded.toString);
                     formData.appendChild(submittButton);
                     console.log("Aus Aus Das Spiel ist aus!");
-                    console.log("BaseUrl: " + ModulpruefungGis.baseUrl);
+                    formData.onsubmit = () => {
+                        console.log(document.forms[0]);
+                        return false;
+                    };
                     submittButton.addEventListener("click", async function () {
-                        let highscoreplayer;
-                        console.log(nameInput.value);
-                        // highscoreplayer.name = nameInput.value;
-                        // highscoreplayer.time = timeNeeded();
-                        console.log("Submitt");
-                        //  highscoreplayer.name = nameInput.value;
-                        //highscoreplayer.time = timeNeeded();
-                        //  userData.append(time:timeNeeded(), name:nameInput);
                         let timeString = String(timeNeeded());
-                        console.log("TimeString" + timeString);
-                        let formDatas = new FormData(document.forms[0]);
-                        let query = new URLSearchParams({ time: timeString, name: nameInput.value });
                         let url = ModulpruefungGis.baseUrl + "/saveTime" + "?time=" + timeString + "&name=" + nameInput.value;
                         await ModulpruefungGis.fetchData(url);
                     });
-                    // window.location.href = "score.html";
+                    window.location.href = "score.html";
                 }
             }
             else if (firstImgRes != null && secondImgRes != null) {
@@ -150,6 +131,16 @@ var ModulpruefungGis;
                 console.log("ich errechne" + timeFinal);
             }
             return timeFinal;
+        }
+    }
+    async function showHighscore() {
+        let highscore = await ModulpruefungGis.getHighscore();
+        console.log(highscore.length);
+        for (let i = 0; i < highscore.length; i++) {
+            let genDiv = document.createElement("div");
+            console.log("Name: " + highscore[i].name + " Highscore: " + highscore[i].time);
+            genDiv.innerHTML = "Name: " + highscore[i].name + " Highscore: " + highscore[i].time;
+            document.body.append(genDiv);
         }
     }
 })(ModulpruefungGis || (ModulpruefungGis = {}));

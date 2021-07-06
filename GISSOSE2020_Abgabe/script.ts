@@ -13,6 +13,8 @@ namespace ModulpruefungGis {
 
     } else if (document.body.id == "adminpage") {
         showCards();
+    } else if (document.body.id == "score") {
+        showHighscore();
     }
 
 
@@ -53,16 +55,19 @@ namespace ModulpruefungGis {
     }
 
 
+
     async function showCards(): Promise<void> {
         let playingCarts: CollectionData[] = await ModulpruefungGis.getData();
         for (let i: number = 0; i < playingCarts.length; i++) {
+
             let image: HTMLImageElement = document.createElement("img");
             let delButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
 
             image.src = playingCarts[i].src;
             image.classList.add("showCards");
-
             delButton.className = "delButton";
+
+
             delButton.addEventListener("click", async function (): Promise<void> {
 
                 let url: string = baseUrl + "/delete?_id=" + playingCarts[i]._id;
@@ -72,7 +77,6 @@ namespace ModulpruefungGis {
             });
 
             delButton.appendChild(document.createTextNode("Delete"));
-
             selectCards.append(image);
             selectCards.appendChild(delButton);
 
@@ -95,24 +99,12 @@ namespace ModulpruefungGis {
 
 
     async function cardClick(klick: MouseEvent): Promise<void> {
+
         if (firstTime) {
             timeNeeded();
             firstTime = false;
 
         }
-        // let nameInput: HTMLInputElement = <HTMLInputElement>document.createElement("input");
-        // let nameInputLabel: HTMLLabelElement = <HTMLLabelElement>document.createElement("label");
-        // let submittButton: HTMLButtonElement = <HTMLButtonElement>document.createElement("button");
-        // nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
-        // nameInput.id = "enterName";          //input für name Highscore 
-
-
-        // document.body.append(nameInputLabel);
-        // nameInputLabel.appendChild(nameInput);
-
-
-        // nameInputLabel.appendChild(submittButton);
-
 
 
         if (firstImgRes == null) {
@@ -120,7 +112,8 @@ namespace ModulpruefungGis {
             firstImgRes = <HTMLImageElement>klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
-            //  firstImgRes.removeEventListener("click", cardClick);
+            firstImgRes.removeEventListener("click", cardClick);
+
 
         } else if (firstImgRes != null && secondImgRes == null) {
 
@@ -156,51 +149,33 @@ namespace ModulpruefungGis {
 
                     nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
                     nameInput.name = "name";
-                    //input für name Highscore 
-                    formData.onsubmit = (e) => {
+
+
+
+                    document.body.append(formData);
+                    formData.appendChild(nameInput);
+                    formData.appendChild(nameInputLabel);
+                    formData.appendChild(submittButton);
+
+
+                    console.log("Aus Aus Das Spiel ist aus!");
+
+
+                    formData.onsubmit = () => {
                         console.log(document.forms[0]);
 
                         return false;
 
                     };
 
-                    document.body.append(formData);
-                    formData.appendChild(nameInput);
-                    formData.appendChild(nameInputLabel);
-
-                    console.log(timeNeeded.toString);
-
-                    formData.appendChild(submittButton);
-
-
-                    console.log("Aus Aus Das Spiel ist aus!");
-                    console.log("BaseUrl: " + baseUrl);
 
                     submittButton.addEventListener("click", async function (): Promise<void> {
-                        let highscoreplayer: Highscore;
-                        console.log(nameInput.value);
 
-                        // highscoreplayer.name = nameInput.value;
-                        // highscoreplayer.time = timeNeeded();
-
-
-
-                        console.log("Submitt");
-
-                        //  highscoreplayer.name = nameInput.value;
-
-                        //highscoreplayer.time = timeNeeded();
-
-                        //  userData.append(time:timeNeeded(), name:nameInput);
 
                         let timeString: string = String(timeNeeded());
-                        console.log("TimeString" + timeString);
-                        let formDatas: FormData = new FormData(document.forms[0]);
-
-                        let query: URLSearchParams = new URLSearchParams({ time: timeString, name: nameInput.value });
 
                         let url: string = baseUrl + "/saveTime" + "?time=" + timeString + "&name=" + nameInput.value;
-                       
+
                         await fetchData(url);
 
                     });
@@ -208,7 +183,7 @@ namespace ModulpruefungGis {
 
 
 
-                    // window.location.href = "score.html";
+                    window.location.href = "score.html";
 
                 }
 
@@ -230,6 +205,8 @@ namespace ModulpruefungGis {
 
             }
         }
+
+
 
 
 
@@ -267,14 +244,28 @@ namespace ModulpruefungGis {
 
 
     }
+    async function showHighscore(): Promise<void> {
+      
+        let highscore: Highscore[] = await ModulpruefungGis.getHighscore();
+        console.log(highscore.length);
+        for (let i: number = 0; i < highscore.length; i++) {
+            let genDiv: HTMLDivElement = <HTMLDivElement>document.createElement("div");
+            console.log("Name: " +  highscore[i].name + " Highscore: " + highscore[i].time);
+            genDiv.innerHTML = "Name: " +  highscore[i].name + " Highscore: " + highscore[i].time;
+            document.body.append(genDiv);
+
+        }
 
 
 
-    interface Highscore {
-        time: number;
-        name: string;
     }
 
+    export interface Highscore {
+        time: string;
+        name: string;
+
+
+    }
 
 
 
@@ -284,6 +275,8 @@ namespace ModulpruefungGis {
         date: string;
 
     }
+
+
     export interface CollectionData extends PlayingCard {
         _id: string;
 
