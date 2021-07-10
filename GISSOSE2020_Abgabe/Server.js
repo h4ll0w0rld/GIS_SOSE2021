@@ -41,7 +41,7 @@ var ModulpruefungGis;
         else if (refUrl.pathname == "/save") {
             await connectRoDatabase(dataBaseUrl, dataStringCards);
             _response.write("hey i am here");
-            playingCarts.insert(url.query);
+            playingCarts.insertOne(url.query); //TODO if Fail
             _response.end();
         }
         else if (refUrl.pathname == "/delete") {

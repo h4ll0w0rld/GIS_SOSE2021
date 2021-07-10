@@ -13,17 +13,28 @@ var ModulpruefungGis;
     else if (document.body.id == "score") {
         showHighscore();
     }
+    else if (document.body.id == "enterName") {
+        console.log("Hallo");
+        console.log(localStorage.getItem("Time"));
+        let submittButton = document.getElementById("submittButtonUser");
+        let nameInput = document.getElementById("nameInput");
+        document.getElementById("seeTime").innerHTML = "Du hast " + localStorage.getItem("Time") + " Sekunden gebraucht";
+        submittButton.addEventListener("click", async function e() {
+            let url = ModulpruefungGis.baseUrl + "/saveTime" + "?time=" + localStorage.getItem("Time") + "&name=" + nameInput.value;
+            await ModulpruefungGis.fetchData(url);
+            window.location.href = "score.html";
+        });
+    }
     async function stardGame() {
         let playingCards = await ModulpruefungGis.getData();
         playingCards = playingCards.concat(playingCards);
-        let cardCover = playingCards[0];
         for (let i = 0; i < playingCards.length; i + 1) {
             let playingSlot = document.createElement("div");
             let image = document.createElement("img");
             let randomNumb = Math.floor(Math.random() * playingCards.length);
             playingSlot.classList.add("cardDiv");
             image.id = playingCards[randomNumb].src;
-            image.src = cardCover.src;
+            image.src = "res/SpielGIS.jpg";
             image.classList.add("PlayingCard");
             image.alt = "Image" + i;
             image.addEventListener("click", cardClick);
@@ -67,7 +78,7 @@ var ModulpruefungGis;
             firstImgRes = klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
-            firstImgRes.removeEventListener("click", cardClick);
+            //   firstImgRes.removeEventListener("click", cardClick);
         }
         else if (firstImgRes != null && secondImgRes == null) {
             secondImgRes = klick.currentTarget;
@@ -82,27 +93,9 @@ var ModulpruefungGis;
                     attemts += 1;
                 }, 800);
                 if (attemts >= playingCards.length) {
-                    let formData = document.createElement("form");
-                    let nameInput = document.createElement("input");
-                    let nameInputLabel = document.createElement("label");
-                    let submittButton = document.createElement("button");
-                    nameInputLabel.innerText = "Bitte gib deinen Namen für den Highscore ein";
-                    nameInput.name = "name";
-                    document.body.append(formData);
-                    formData.appendChild(nameInput);
-                    formData.appendChild(nameInputLabel);
-                    formData.appendChild(submittButton);
                     console.log("Aus Aus Das Spiel ist aus!");
-                    formData.onsubmit = () => {
-                        console.log(document.forms[0]);
-                        return false;
-                    };
-                    submittButton.addEventListener("click", async function () {
-                        let timeString = String(timeNeeded());
-                        let url = ModulpruefungGis.baseUrl + "/saveTime" + "?time=" + timeString + "&name=" + nameInput.value;
-                        await ModulpruefungGis.fetchData(url);
-                    });
-                    window.location.href = "score.html";
+                    localStorage.setItem("Time", String(timeNeeded()));
+                    window.location.href = "entername.html";
                 }
             }
             else if (firstImgRes != null && secondImgRes != null) {
@@ -125,7 +118,9 @@ var ModulpruefungGis;
                 timeEnd = performance.now();
             }
             if (timeStart != -1 && timeEnd != -1) {
-                timeFinal = timeEnd - timeStart;
+                console.log(timeEnd - timeStart);
+                timeFinal = Math.round((timeEnd - timeStart) / 1000);
+                console.log(timeFinal);
                 timeStart = -1;
                 timeEnd = -1;
                 console.log("ich errechne" + timeFinal);
@@ -135,11 +130,12 @@ var ModulpruefungGis;
     }
     async function showHighscore() {
         let highscore = await ModulpruefungGis.getHighscore();
-        console.log(highscore.length);
+        highscore.sort((a, b) => (a.time > b.time) ? 1 : -1);
         for (let i = 0; i < highscore.length; i++) {
             let genDiv = document.createElement("div");
+            genDiv.classList.add("highscoreDiv");
             console.log("Name: " + highscore[i].name + " Highscore: " + highscore[i].time);
-            genDiv.innerHTML = "Name: " + highscore[i].name + " Highscore: " + highscore[i].time;
+            genDiv.innerHTML = (i + 1) + ": " + highscore[i].name + "</br>" + highscore[i].time + " Sekunden";
             document.body.append(genDiv);
         }
     }

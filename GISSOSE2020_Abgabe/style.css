@@ -1,3 +1,23 @@
+body {
+    background-color: #99A8A8;
+}
+
+h1 {
+    color: #C94600;
+    font-size: 4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .PlayingCard {
     width: 183px;
 }
@@ -12,12 +32,16 @@
 }
 
 .showCards {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 }
 
 .input {
     margin: 1rem;
+}
+
+.formAdmin {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .delButton {
@@ -26,8 +50,41 @@
     background-color: chartreuse;
 }
 
+.highscoreDiv {
+    /* background-color: #b1928b; */
+    width: 20rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: auto;
+    text-align: center;
+}
+
+#firstDiv {
+    /* background-color: #022859; */
+    width: 100%;
+    height: 15rem;
+}
+
+#secondDiv {
+    /* background-color: #6AAED9; */
+    width: 100%;
+    height: 15rem;
+}
+
+#thirdDiv {
+    /* background-color: #F25F29; */
+    width: 100%;
+    height: 15rem;
+}
+
+.chose {
+    padding-top: 10rem;
+    color: #101626;
+    text-decoration: none;
+}
+
 #formData {
-    float: none;
     margin-left: 22%;
     margin-right: auto;
 }
@@ -35,18 +92,19 @@
 #PlayingBackground {
     width: 800px;
     height: 800px;
-    background-color: cadetblue;
+    background-color: #6B7575;
     margin-left: auto;
     margin-right: auto;
 }
 
 #Menu {
     overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
+    margin: auto;
     font-size: x-large;
-    padding-bottom: 2.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1.5rem;
+    width: 30%;
+    text-align: center;
 }
 
 #Menu a {
@@ -55,9 +113,8 @@
 }
 
 #Headline {
-    width: 20%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    /* width: 45%; */
     margin-bottom: 2.5rem;
 }
 
@@ -65,9 +122,19 @@
     width: auto;
     height: 10rem;
     margin-top: 50px;
+    margin-left: 10rem;
 }
 
-#enterName {
-    /* width: 200px;
-    height: 200px; */
+#Menu a:hover {
+    color: #C94600;
 }
+
+.chose a:hover {
+    color: #C94600;
+}
+
+@media only screen and (min-width: 1200px) {}
+
+@media only screen and (min-width: 600px) {}
+
+@media only screen and (max-width: 600px) {}

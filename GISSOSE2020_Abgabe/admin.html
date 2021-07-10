@@ -14,23 +14,30 @@
 <body id="adminpage">
     <header>
         <div id="Menu">
+            <a href="landing.html">Startseite</a>
             <a href="spielseite.html"> Memory</a>
             <a href="score.html"> Bestscore</a>
             <a href="admin.html"> Admin</a>
+
         </div>
     </header>
 
+
+    <h1>Bitte wähle 8 Spielkarten</h1>
+    <H3 id="newImg">Neues Bild hinzufügen:</H3>
     <form id="formData">
-        <label for="src">Bildlink</label>
+        <label for="src" class="formAdmin">Bildlink</label>
         <input type="text" name="src" class="input">
-        <label for="location">Location name</label>
+        <label for="location" class="formAdmin">Location name</label>
         <input type="text" name="location" class="input">
-        <label for="date">Date</label>
+        <label for="date" class="formAdmin">Date</label>
         <input type="text" name="date" class="input">
         <input type="button" value="insertData" id="insertButton">
         <input type="button" value="ShowData" id="ShowDataButton">
     </form>
     <div id="selectCards"></div>
+
+
 
 
 

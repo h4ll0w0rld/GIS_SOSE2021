@@ -27,7 +27,7 @@ var SendScript;
     async function showResponsee() {
         let response = await sendTheData();
         let responseDiv = document.getElementById("response");
-        responseDiv.innerHTML = "Serverantwort: " + await response;
+        responseDiv.innerHTML = "Serverantwort: " + response;
     }
 })(SendScript || (SendScript = {}));
 //# sourceMappingURL=SendScript.js.map

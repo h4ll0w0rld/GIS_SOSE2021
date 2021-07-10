@@ -42,7 +42,7 @@ namespace SendScript {
     async function showResponsee(): Promise< void> {
         let response: string = await sendTheData();
         let responseDiv: HTMLDivElement = <HTMLDivElement>document.getElementById("response");
-        responseDiv.innerHTML = "Serverantwort: " + await response;
+        responseDiv.innerHTML = "Serverantwort: " +  response;
 
     }
 

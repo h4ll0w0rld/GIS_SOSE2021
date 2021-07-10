@@ -51,10 +51,11 @@ export namespace ModulpruefungGis {
             await connectRoDatabase(dataBaseUrl, dataStringCards);
 
             _response.write("hey i am here");
-            playingCarts.insert(url.query);
+            playingCarts.insertOne(url.query);              //TODO if Fail
             _response.end();
 
         } else if (refUrl.pathname == "/delete") {
+
             await connectRoDatabase(dataBaseUrl, dataStringCards);
             console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
@@ -66,6 +67,7 @@ export namespace ModulpruefungGis {
             console.log(url.query);
             playingCarts.insertOne(url.query);
             _response.end();
+            
 
         } else if (refUrl.pathname == "/getHighscore") {
 
