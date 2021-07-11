@@ -40,7 +40,7 @@ var ModulpruefungGis;
             let query = new URLSearchParams(userData);
             url += "?" + query.toString();
             window.location.reload();
-            console.log(await fetchData(url));
+            await fetchData(url);
         }
     }
     function deleteData() {
