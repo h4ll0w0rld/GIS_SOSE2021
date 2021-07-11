@@ -13,28 +13,23 @@ var ModulpruefungGis;
         });
     }
     async function fetchData(url) {
-        console.log(url);
         let response = await fetch(url, { method: "get" });
         let responseText = await response.text();
         return responseText;
     }
     ModulpruefungGis.fetchData = fetchData;
     async function getData() {
-        console.log("i am starting");
         url = baseUrl + "/getData";
         if (dataBaseImg == undefined) {
             dataBaseImg = JSON.parse(await fetchData(url));
-            console.log("ACHTUNG");
         }
         return dataBaseImg;
     }
     ModulpruefungGis.getData = getData;
     async function getHighscore() {
-        console.log("i am starting");
         url = baseUrl + "/getHighscore";
         if (highscoreArray == undefined) {
             highscoreArray = JSON.parse(await fetchData(url));
-            console.log("ACHTUNG !!");
         }
         return highscoreArray;
     }
@@ -47,7 +42,7 @@ var ModulpruefungGis;
             console.log(await fetchData(url));
         }
     }
-    function deleteData(Card) {
+    function deleteData() {
         url = baseUrl + "/delete";
         url += "?";
     }

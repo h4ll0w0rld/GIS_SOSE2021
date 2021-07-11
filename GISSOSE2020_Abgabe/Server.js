@@ -15,8 +15,8 @@ var ModulpruefungGis;
     console.log("Port is: " + port);
     function startServer(_port) {
         console.log("Starting server changes");
-        let server = Http.createServer(); //Neues Element 
-        server.addListener("request", handleRequest); //EventListener für anfragen/"suche" (warten) auf anfrage;
+        let server = Http.createServer();
+        server.addListener("request", handleRequest);
         server.addListener("listening", handleListen);
         server.listen(port);
     }
@@ -27,7 +27,7 @@ var ModulpruefungGis;
         let dataStringCards = "PlayingCarts";
         let dataStringTime = "Time";
         console.log("I hear voices!");
-        _response.setHeader("content-type", "text/html; charset=utf-8"); //Anfrage wird als HTML Text Element dargestellt
+        _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         let refUrl = new URL(_request.url, "https://myfirsttestserverisnowlive.herokuapp.com");
         var url = Url.parse(_request.url, true);
@@ -41,18 +41,15 @@ var ModulpruefungGis;
         else if (refUrl.pathname == "/save") {
             await connectRoDatabase(dataBaseUrl, dataStringCards);
             _response.write("hey i am here");
-            playingCarts.insertOne(url.query); //TODO if Fail
+            playingCarts.insertOne(url.query);
             _response.end();
         }
         else if (refUrl.pathname == "/delete") {
             await connectRoDatabase(dataBaseUrl, dataStringCards);
-            console.log("hey ich lösche");
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
         }
         else if (refUrl.pathname == "/saveTime") {
             await connectRoDatabase(dataBaseUrl, dataStringTime);
-            console.log("connected to DataBase savetime");
-            console.log(url.query);
             playingCarts.insertOne(url.query);
             _response.end();
         }

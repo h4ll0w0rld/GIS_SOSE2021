@@ -1,140 +1,163 @@
-body {
-    background-color: #99A8A8;
-}
-
-h1 {
-    color: #C94600;
-    font-size: 4rem;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-}
-
-h3 {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-p {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.PlayingCard {
-    width: 183px;
-}
-
-.cardDiv {
-    float: left;
-    width: 183px;
-    height: 183px;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-}
-
-.showCards {
-    width: 150px;
-    height: 150px;
-}
-
-.input {
-    margin: 1rem;
-}
-
-.formAdmin {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.delButton {
-    width: 50px;
-    height: 20px;
-    background-color: chartreuse;
-}
-
-.highscoreDiv {
-    /* background-color: #b1928b; */
-    width: 20rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    padding: 1rem;
-    margin: auto;
-    text-align: center;
-}
-
-#firstDiv {
-    /* background-color: #022859; */
-    width: 100%;
-    height: 15rem;
-}
-
-#secondDiv {
-    /* background-color: #6AAED9; */
-    width: 100%;
-    height: 15rem;
-}
-
-#thirdDiv {
-    /* background-color: #F25F29; */
-    width: 100%;
-    height: 15rem;
-}
-
-.chose {
-    padding-top: 10rem;
-    color: #101626;
-    text-decoration: none;
-}
-
-#formData {
-    margin-left: 22%;
-    margin-right: auto;
-}
-
-#PlayingBackground {
-    width: 800px;
-    height: 800px;
-    background-color: #6B7575;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#Menu {
-    overflow: hidden;
-    margin: auto;
-    font-size: x-large;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 1.5rem;
-    width: 30%;
-    text-align: center;
-}
-
-#Menu a {
-    text-decoration: none;
-    margin-right: 0.5rem;
-}
-
-#Headline {
-    margin: auto;
-    /* width: 45%; */
-    margin-bottom: 2.5rem;
-}
-
-#selectCards {
-    width: auto;
-    height: 10rem;
-    margin-top: 50px;
-    margin-left: 10rem;
-}
-
-#Menu a:hover {
-    color: #C94600;
-}
-
-.chose a:hover {
-    color: #C94600;
-}
-
-@media only screen and (min-width: 1200px) {}
-
-@media only screen and (min-width: 600px) {}
-
-@media only screen and (max-width: 600px) {}
+    body {
+        background-color: #99A8A8;
+    }
+    
+    H1 {
+        text-align: center;
+        font-size: 5rem;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #C94600;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    H2 {
+        text-align: center;
+        font-size: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    ul {
+        list-style-type: none;
+    }
+    
+    li {
+        float: right;
+        text-align: center;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    #Menu a {
+        display: block;
+        padding: 8px;
+        background-color: #dddddd;
+    }
+    
+    .highscoreDiv {
+        width: 20rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+        padding: 1rem;
+        margin: auto;
+        text-align: center;
+    }
+    
+    #Menu {
+        width: 100%;
+        height: 3rem;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    #Menu a {
+        color: black;
+        text-decoration: none;
+        font-size: 1.5rem;
+        margin: 0.5rem;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    #landingDiv a {
+        background-color: darkgray;
+        color: black;
+        text-decoration: none;
+        text-align: center;
+    }
+    
+    #landingDiv a:hover {
+        color: chocolate;
+    }
+    
+    #landingDiv H2 {
+        background-color: #6AAED9;
+        width: 33%;
+        float: left;
+    }
+    
+    Menu li {
+        width: 20%;
+    }
+    
+    #Menu a:hover {
+        color: #C94600;
+    }
+    
+    #formData {
+        text-align: center;
+        margin: 3rem;
+    }
+    
+    #formData label {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .showCards {
+        width: 15rem;
+        height: 15rem;
+    }
+    
+    #selectCards {
+        margin: 5rem;
+    }
+    
+    .PlayingCard {
+        width: 183px;
+    }
+    
+    #PlayingBackground {
+        width: 50rem;
+        height: 49rem;
+        background-color: #6B7575;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .cardDiv {
+        float: left;
+        width: 183px;
+        height: 183px;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    #scoreEntry {
+        margin: auto;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    @media screen and (min-width: 1000px) {}
+    
+    @media screen and (max-width: 1000px) {
+        input {
+            width: 100%;
+        }
+    }
+    
+    @media screen and (max-width: 550px) {
+        h1 {
+            text-align: left;
+            font-size: 4rem;
+        }
+        .chose {
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+        }
+        #Menu {
+            padding-bottom: 2rem;
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+    }

@@ -18,7 +18,7 @@ namespace ModulpruefungGis {
 
     }
     export async function fetchData(url: string): Promise<string> {
-        console.log(url);
+      
         let response: Response = await fetch(url, { method: "get" });
         let responseText: string = await response.text();
 
@@ -30,11 +30,11 @@ namespace ModulpruefungGis {
 
 
     export async function getData(): Promise<CollectionData[]> {
-        console.log("i am starting");
+     
         url = baseUrl + "/getData";
         if (dataBaseImg == undefined) {
             dataBaseImg = JSON.parse(await fetchData(url));
-            console.log("ACHTUNG");
+           
         }
 
         return dataBaseImg;
@@ -42,11 +42,11 @@ namespace ModulpruefungGis {
     }
     
     export async function getHighscore(): Promise<Highscore[]> {
-        console.log("i am starting");
+       
         url = baseUrl + "/getHighscore";
         if (highscoreArray == undefined) {
             highscoreArray = JSON.parse(await fetchData(url));
-            console.log("ACHTUNG !!");
+           
         }
 
         return highscoreArray;
@@ -70,7 +70,7 @@ namespace ModulpruefungGis {
 
 
 
-    export function deleteData(Card: PlayingCard): void {
+    export function deleteData(): void {
         url = baseUrl + "/delete";
         url += "?";
 

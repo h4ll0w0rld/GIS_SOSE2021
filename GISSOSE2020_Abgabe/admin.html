@@ -13,29 +13,35 @@
 
 <body id="adminpage">
     <header>
-        <div id="Menu">
-            <a href="landing.html">Startseite</a>
-            <a href="spielseite.html"> Memory</a>
-            <a href="score.html"> Bestscore</a>
-            <a href="admin.html"> Admin</a>
-
-        </div>
+        <nav id="Menu">
+            <ul>
+                <li><a href="admin.html"> Admin</a></li>
+                <li><a href="score.html"> Bestscore</a></li>
+                <li> <a href="spielseite.html"> Memory</a></li>
+                <li><a href="landing.html">Startseite</a></li>
+            </ul>
+        </nav>
     </header>
+    <main>
+        <div id="headline">
+            <h1>Bitte wähle 8 Spielkarten</h1>
+            <H2 id="newImg">Neues Bild hinzufügen:</H2>
+        </div>
+
+        <form id="formData">
+            <label for="src" class="formAdmin">Bildlink:</label>
+            <input id="src" type="text" name="src" class="input">
+            <label for="location" class="formAdmin">Location name:</label>
+            <input id="location" type="text" name="location" class="input">
+            <label for="date" class="formAdmin">Date:</label>
+            <input id="date" type="text" name="date" class="input">
+            <input type="button" value="Bild Einfügen" id="insertButton">
+
+        </form>
+        <div id="selectCards"></div>
+    </main>
 
 
-    <h1>Bitte wähle 8 Spielkarten</h1>
-    <H3 id="newImg">Neues Bild hinzufügen:</H3>
-    <form id="formData">
-        <label for="src" class="formAdmin">Bildlink</label>
-        <input id="src" type="text" name="src" class="input">
-        <label for="location" class="formAdmin">Location name</label>
-        <input id="location" type="text" name="location" class="input">
-        <label for="date" class="formAdmin">Date</label>
-        <input id="date" type="text" name="date" class="input">
-        <input type="button" value="insertData" id="insertButton">
-        <input type="button" value="ShowData" id="ShowDataButton">
-    </form>
-    <div id="selectCards"></div>
 
 
 

@@ -9,7 +9,6 @@ var SendScript;
     async function sendTheData() {
         let userData = new FormData(document.forms[0]);
         let query = new URLSearchParams(userData);
-        console.log(query.toString);
         url += "?" + query.toString();
         let response = await fetch(url, { method: "get" });
         let responseText = await response.text();

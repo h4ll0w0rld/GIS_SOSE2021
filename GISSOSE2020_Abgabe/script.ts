@@ -14,23 +14,20 @@ namespace ModulpruefungGis {
         showCards();
     } else if (document.body.id == "score") {
 
-
         showHighscore();
 
     } else if (document.body.id == "enterName") {
-        console.log("Hallo");
-        console.log(localStorage.getItem("Time"));
 
         let submittButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("submittButtonUser");
         let nameInput: HTMLInputElement = <HTMLInputElement>document.getElementById("nameInput");
-        document.getElementById("seeTime").innerHTML = "Du hast " + localStorage.getItem("Time") + " Sekunden gebraucht";
+        document.getElementById("seeTime").innerHTML = "Du hast " + localStorage.getItem("Time") + " Sekunden gebraucht!";
 
         submittButton.addEventListener("click", async function e(): Promise<void> {
             let url: string = baseUrl + "/saveTime" + "?time=" + localStorage.getItem("Time") + "&name=" + nameInput.value;
 
             await fetchData(url);
-            window.location.href = "score.html";
 
+            window.location.href = "score.html";
 
 
         });
@@ -64,8 +61,6 @@ namespace ModulpruefungGis {
             playingArea.append(playingSlot);
             playingSlot.append(image);
 
-
-
             playingCards.splice(randomNumb, 1);
 
 
@@ -96,7 +91,7 @@ namespace ModulpruefungGis {
 
             });
 
-            delButton.appendChild(document.createTextNode("Delete"));
+            delButton.appendChild(document.createTextNode("Löschen"));
             selectCards.append(image);
             selectCards.appendChild(delButton);
 
@@ -132,7 +127,7 @@ namespace ModulpruefungGis {
             firstImgRes = <HTMLImageElement>klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
-            //   firstImgRes.removeEventListener("click", cardClick);
+            firstImgRes.removeEventListener("click", cardClick);
 
 
         } else if (firstImgRes != null && secondImgRes == null) {
@@ -157,7 +152,7 @@ namespace ModulpruefungGis {
 
 
 
-                }, 800);
+                }, 600);
 
 
                 if (attemts >= playingCards.length) {
@@ -182,7 +177,7 @@ namespace ModulpruefungGis {
                     secondImgRes = null;
                     console.log("alles weg :)");
 
-                }, 800);
+                }, 600);
 
             }
         }
@@ -241,7 +236,7 @@ namespace ModulpruefungGis {
             let genDiv: HTMLDivElement = <HTMLDivElement>document.createElement("div");
             genDiv.classList.add("highscoreDiv");
             console.log("Name: " + highscore[i].name + " Highscore: " + highscore[i].time);
-            genDiv.innerHTML = (i + 1) + ": " + highscore[i].name + "</br>"  + highscore[i].time + " Sekunden";
+            genDiv.innerHTML = (i + 1) + ": " + highscore[i].name + "</br>" + highscore[i].time + " Sekunden";
             document.body.append(genDiv);
 
         }

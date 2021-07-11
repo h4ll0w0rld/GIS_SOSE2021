@@ -14,11 +14,9 @@ var ModulpruefungGis;
         showHighscore();
     }
     else if (document.body.id == "enterName") {
-        console.log("Hallo");
-        console.log(localStorage.getItem("Time"));
         let submittButton = document.getElementById("submittButtonUser");
         let nameInput = document.getElementById("nameInput");
-        document.getElementById("seeTime").innerHTML = "Du hast " + localStorage.getItem("Time") + " Sekunden gebraucht";
+        document.getElementById("seeTime").innerHTML = "Du hast " + localStorage.getItem("Time") + " Sekunden gebraucht!";
         submittButton.addEventListener("click", async function e() {
             let url = ModulpruefungGis.baseUrl + "/saveTime" + "?time=" + localStorage.getItem("Time") + "&name=" + nameInput.value;
             await ModulpruefungGis.fetchData(url);
@@ -57,7 +55,7 @@ var ModulpruefungGis;
                 console.log("deleted");
                 await ModulpruefungGis.fetchData(url);
             });
-            delButton.appendChild(document.createTextNode("Delete"));
+            delButton.appendChild(document.createTextNode("Löschen"));
             selectCards.append(image);
             selectCards.appendChild(delButton);
         }
@@ -78,7 +76,7 @@ var ModulpruefungGis;
             firstImgRes = klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
-            //   firstImgRes.removeEventListener("click", cardClick);
+            firstImgRes.removeEventListener("click", cardClick);
         }
         else if (firstImgRes != null && secondImgRes == null) {
             secondImgRes = klick.currentTarget;
@@ -91,7 +89,7 @@ var ModulpruefungGis;
                     firstImgRes = null;
                     secondImgRes = null;
                     attemts += 1;
-                }, 800);
+                }, 600);
                 if (attemts >= playingCards.length) {
                     console.log("Aus Aus Das Spiel ist aus!");
                     localStorage.setItem("Time", String(timeNeeded()));
@@ -106,7 +104,7 @@ var ModulpruefungGis;
                     firstImgRes = null;
                     secondImgRes = null;
                     console.log("alles weg :)");
-                }, 800);
+                }, 600);
             }
         }
         function timeNeeded() {

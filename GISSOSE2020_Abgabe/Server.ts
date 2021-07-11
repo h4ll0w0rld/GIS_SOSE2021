@@ -17,22 +17,22 @@ export namespace ModulpruefungGis {
 
     function startServer(_port: number | string): void {
         console.log("Starting server changes");
-        let server: Http.Server = Http.createServer();          //Neues Element 
-        server.addListener("request", handleRequest);           //EventListener für anfragen/"suche" (warten) auf anfrage;
+        let server: Http.Server = Http.createServer();          
+        server.addListener("request", handleRequest);         
         server.addListener("listening", handleListen);
         server.listen(port);
     }
 
-    function handleListen(): void {             //Funktion für die "Lauschfunktion"
+    function handleListen(): void {           
         console.log("Listening");
     }
 
 
-    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {          //Anfragen werden hier "gefagen"
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {         
         let dataStringCards: string = "PlayingCarts";
         let dataStringTime: string = "Time";
         console.log("I hear voices!");
-        _response.setHeader("content-type", "text/html; charset=utf-8");                //Anfrage wird als HTML Text Element dargestellt
+        _response.setHeader("content-type", "text/html; charset=utf-8");  
         _response.setHeader("Access-Control-Allow-Origin", "*");
         let refUrl: URL = new URL(_request.url, "https://myfirsttestserverisnowlive.herokuapp.com");
         var url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
@@ -51,20 +51,21 @@ export namespace ModulpruefungGis {
             await connectRoDatabase(dataBaseUrl, dataStringCards);
 
             _response.write("hey i am here");
-            playingCarts.insertOne(url.query);              //TODO if Fail
+            playingCarts.insertOne(url.query);            
             _response.end();
 
         } else if (refUrl.pathname == "/delete") {
 
             await connectRoDatabase(dataBaseUrl, dataStringCards);
-            console.log("hey ich lösche");
+
             playingCarts.deleteOne({ _id: new Mongo.ObjectId(refUrl.searchParams.get("_id")) });
+           
 
         } else if (refUrl.pathname == "/saveTime") {
 
             await connectRoDatabase(dataBaseUrl, dataStringTime);
-            console.log("connected to DataBase savetime");
-            console.log(url.query);
+
+        
             playingCarts.insertOne(url.query);
             _response.end();
             
