@@ -1,7 +1,7 @@
 "use strict";
 var ModulpruefungGis;
 (function (ModulpruefungGis) {
-    let playingArea = document.getElementById("PlayingBackground");
+    let playingArea = document.getElementById("playingBackground");
     let selectCards = document.getElementById("selectCards");
     ModulpruefungGis.baseUrl = "https://myfirsttestserverisnowlive.herokuapp.com";
     if (document.body.id == "playPage") {
@@ -55,7 +55,6 @@ var ModulpruefungGis;
                 console.log("deleted");
                 window.location.reload();
                 await ModulpruefungGis.fetchData(url);
-                console.log("hey");
             });
             delButton.appendChild(document.createTextNode("Löschen"));
             selectCards.append(image);
@@ -69,19 +68,19 @@ var ModulpruefungGis;
     let timeStart = -1;
     let timeEnd = -1;
     let firstTime = true;
-    async function cardClick(klick) {
+    async function cardClick(_klick) {
         if (firstTime) {
             timeNeeded();
             firstTime = false;
         }
         if (firstImgRes == null) {
-            firstImgRes = klick.currentTarget;
+            firstImgRes = _klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
             firstImgRes.removeEventListener("click", cardClick);
         }
         else if (firstImgRes != null && secondImgRes == null) {
-            secondImgRes = klick.currentTarget;
+            secondImgRes = _klick.currentTarget;
             secondImgRes.src = secondImgRes.id;
             if (firstImgRes != null && secondImgRes != null && firstImgRes.id == secondImgRes.id) {
                 let playingCards = await ModulpruefungGis.getData();
@@ -93,7 +92,6 @@ var ModulpruefungGis;
                     attemts += 1;
                 }, 600);
                 if (attemts >= playingCards.length) {
-                    console.log("Aus Aus Das Spiel ist aus!");
                     localStorage.setItem("Time", String(timeNeeded()));
                     window.location.href = "entername.html";
                 }
@@ -105,7 +103,6 @@ var ModulpruefungGis;
                     firstImgRes.addEventListener("click", cardClick);
                     firstImgRes = null;
                     secondImgRes = null;
-                    console.log("alles weg :)");
                 }, 600);
             }
         }
@@ -118,23 +115,19 @@ var ModulpruefungGis;
                 timeEnd = performance.now();
             }
             if (timeStart != -1 && timeEnd != -1) {
-                console.log(timeEnd - timeStart);
                 timeFinal = Math.round((timeEnd - timeStart) / 1000);
-                console.log(timeFinal);
                 timeStart = -1;
                 timeEnd = -1;
-                console.log("ich errechne" + timeFinal);
             }
             return timeFinal;
         }
     }
     async function showHighscore() {
         let highscore = await ModulpruefungGis.getHighscore();
-        highscore.sort((a, b) => (a.time > b.time) ? 1 : -1);
+        highscore.sort((a, b) => (Number(a.time) > Number(b.time)) ? 1 : -1);
         for (let i = 0; i < highscore.length; i++) {
             let genDiv = document.createElement("div");
             genDiv.classList.add("highscoreDiv");
-            console.log("Name: " + highscore[i].name + " Highscore: " + highscore[i].time);
             genDiv.innerHTML = (i + 1) + ": " + highscore[i].name + "</br>" + highscore[i].time + " Sekunden";
             document.body.append(genDiv);
         }

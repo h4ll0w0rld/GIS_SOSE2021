@@ -9,12 +9,12 @@ export namespace ModulpruefungGis {
 
     let port: number = Number(process.env.PORT);
     if (!port)
-        port = 8122;
+        port = 8122; 
 
     startServer(port);
 
     console.log("Port is: " + port);
-//Hello its me
+
     function startServer(_port: number | string): void {
         console.log("Starting server changes");
         let server: Http.Server = Http.createServer();          
@@ -87,14 +87,14 @@ export namespace ModulpruefungGis {
 
 
 
-    async function connectRoDatabase(_url: string, database: string): Promise<void> {
+    async function connectRoDatabase(_url: string, _database: string): Promise<void> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
 
-        playingCarts = mongoClient.db("Test").collection(database);
+        playingCarts = mongoClient.db("Test").collection(_database);
         console.log("Database is connected", playingCarts != undefined);
-        console.log(database);
+        console.log(_database);
 
     }
 

@@ -17,9 +17,9 @@ namespace ModulpruefungGis {
 
 
     }
-    export async function fetchData(url: string): Promise<string> {
+    export async function fetchData(_url: string): Promise<string> {
 
-        let response: Response = await fetch(url, { method: "get" });
+        let response: Response = await fetch(_url, { method: "get" });
         let responseText: string = await response.text();
 
         return responseText;

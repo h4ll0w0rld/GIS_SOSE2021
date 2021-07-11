@@ -1,7 +1,7 @@
 
 
 namespace ModulpruefungGis {
-    let playingArea: HTMLDivElement = <HTMLDivElement>document.getElementById("PlayingBackground");
+    let playingArea: HTMLDivElement = <HTMLDivElement>document.getElementById("playingBackground");
     let selectCards: HTMLDivElement = <HTMLDivElement>document.getElementById("selectCards");
     export let baseUrl: string = "https://myfirsttestserverisnowlive.herokuapp.com";
 
@@ -90,7 +90,7 @@ namespace ModulpruefungGis {
                 window.location.reload();
                 await ModulpruefungGis.fetchData(url);
 
-                console.log("hey");
+              
 
 
             });
@@ -117,7 +117,7 @@ namespace ModulpruefungGis {
 
 
 
-    async function cardClick(klick: MouseEvent): Promise<void> {
+    async function cardClick(_klick: MouseEvent): Promise<void> {
 
         if (firstTime) {
             timeNeeded();
@@ -128,7 +128,7 @@ namespace ModulpruefungGis {
 
         if (firstImgRes == null) {
 
-            firstImgRes = <HTMLImageElement>klick.currentTarget;
+            firstImgRes = <HTMLImageElement>_klick.currentTarget;
             firstSrc = firstImgRes.src;
             firstImgRes.src = firstImgRes.id;
             firstImgRes.removeEventListener("click", cardClick);
@@ -136,7 +136,7 @@ namespace ModulpruefungGis {
 
         } else if (firstImgRes != null && secondImgRes == null) {
 
-            secondImgRes = <HTMLImageElement>klick.currentTarget;
+            secondImgRes = <HTMLImageElement>_klick.currentTarget;
             secondImgRes.src = secondImgRes.id;
 
 
@@ -161,7 +161,7 @@ namespace ModulpruefungGis {
 
                 if (attemts >= playingCards.length) {
 
-                    console.log("Aus Aus Das Spiel ist aus!");
+                  
                     localStorage.setItem("Time", String(timeNeeded()));
                     window.location.href = "entername.html";
 
@@ -179,7 +179,7 @@ namespace ModulpruefungGis {
                     firstImgRes.addEventListener("click", cardClick);
                     firstImgRes = null;
                     secondImgRes = null;
-                    console.log("alles weg :)");
+                   
 
                 }, 600);
 
@@ -210,14 +210,11 @@ namespace ModulpruefungGis {
 
 
             if (timeStart != -1 && timeEnd != -1) {
-                console.log(timeEnd - timeStart);
 
                 timeFinal = Math.round((timeEnd - timeStart) / 1000);
-                console.log(timeFinal);
                 timeStart = -1;
                 timeEnd = -1;
-                console.log("ich errechne" + timeFinal);
-
+              
             }
             return timeFinal;
 
@@ -234,17 +231,18 @@ namespace ModulpruefungGis {
 
         let highscore: Highscore[] = await ModulpruefungGis.getHighscore();
 
-        highscore.sort((a, b) => (a.time > b.time) ? 1 : -1);
+        highscore.sort((a, b) => (Number(a.time) > Number(b.time)) ? 1 : -1);
 
         for (let i: number = 0; i < highscore.length; i++) {
+
             let genDiv: HTMLDivElement = <HTMLDivElement>document.createElement("div");
+
             genDiv.classList.add("highscoreDiv");
-            console.log("Name: " + highscore[i].name + " Highscore: " + highscore[i].time);
             genDiv.innerHTML = (i + 1) + ": " + highscore[i].name + "</br>" + highscore[i].time + " Sekunden";
+
             document.body.append(genDiv);
 
         }
-
 
 
 

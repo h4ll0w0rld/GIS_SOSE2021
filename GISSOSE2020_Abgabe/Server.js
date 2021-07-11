@@ -13,7 +13,6 @@ var ModulpruefungGis;
         port = 8122;
     startServer(port);
     console.log("Port is: " + port);
-    //Hello its me
     function startServer(_port) {
         console.log("Starting server changes");
         let server = Http.createServer();
@@ -60,13 +59,13 @@ var ModulpruefungGis;
             _response.end();
         }
     }
-    async function connectRoDatabase(_url, database) {
+    async function connectRoDatabase(_url, _database) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        playingCarts = mongoClient.db("Test").collection(database);
+        playingCarts = mongoClient.db("Test").collection(_database);
         console.log("Database is connected", playingCarts != undefined);
-        console.log(database);
+        console.log(_database);
     }
 })(ModulpruefungGis = exports.ModulpruefungGis || (exports.ModulpruefungGis = {}));
 //# sourceMappingURL=Server.js.map

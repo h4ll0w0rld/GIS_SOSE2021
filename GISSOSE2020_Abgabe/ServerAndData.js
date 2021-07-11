@@ -12,8 +12,8 @@ var ModulpruefungGis;
             saveData();
         });
     }
-    async function fetchData(url) {
-        let response = await fetch(url, { method: "get" });
+    async function fetchData(_url) {
+        let response = await fetch(_url, { method: "get" });
         let responseText = await response.text();
         return responseText;
     }
