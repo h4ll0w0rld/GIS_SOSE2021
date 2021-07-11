@@ -13,6 +13,7 @@ var ModulpruefungGis;
         port = 8122;
     startServer(port);
     console.log("Port is: " + port);
+    //Hello its me
     function startServer(_port) {
         console.log("Starting server changes");
         let server = Http.createServer();

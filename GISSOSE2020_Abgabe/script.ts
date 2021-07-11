@@ -89,9 +89,9 @@ namespace ModulpruefungGis {
                 console.log("deleted");
                 window.location.reload();
                 await ModulpruefungGis.fetchData(url);
-               
+
                 console.log("hey");
-               
+
 
             });
 

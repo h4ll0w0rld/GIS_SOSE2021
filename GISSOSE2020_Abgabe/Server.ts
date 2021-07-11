@@ -14,7 +14,7 @@ export namespace ModulpruefungGis {
     startServer(port);
 
     console.log("Port is: " + port);
-
+//Hello its me
     function startServer(_port: number | string): void {
         console.log("Starting server changes");
         let server: Http.Server = Http.createServer();          
