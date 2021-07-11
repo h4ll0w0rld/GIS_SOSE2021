@@ -39,6 +39,7 @@ var ModulpruefungGis;
             let userData = new FormData(document.forms[0]);
             let query = new URLSearchParams(userData);
             url += "?" + query.toString();
+            window.location.reload();
             console.log(await fetchData(url));
         }
     }

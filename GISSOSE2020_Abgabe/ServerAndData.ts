@@ -61,6 +61,7 @@ namespace ModulpruefungGis {
             let userData: FormData = new FormData(document.forms[0]);
             let query: URLSearchParams = new URLSearchParams(<any>userData);
             url += "?" + query.toString();
+            window.location.reload();
 
             console.log(await fetchData(url));
 

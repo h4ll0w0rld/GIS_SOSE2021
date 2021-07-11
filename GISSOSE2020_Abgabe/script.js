@@ -54,6 +54,7 @@ var ModulpruefungGis;
                 let url = ModulpruefungGis.baseUrl + "/delete?_id=" + playingCarts[i]._id;
                 console.log("deleted");
                 await ModulpruefungGis.fetchData(url);
+                window.location.reload();
             });
             delButton.appendChild(document.createTextNode("Löschen"));
             selectCards.append(image);
